@@ -1,0 +1,355 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/coming-soon.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:14:00 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content=" width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <title>P O Z O</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/css/animate.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/font-awesome.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/swiper.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/jquery.fancybox.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- Page Preloader -->
+    <div id="Lfa-page-loading" class="pozo-pageloading">
+      <div class="pozo-pageloading-inner">
+        <img src="images/logo.png" class="logo" alt="" />
+      </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
+    </div>
+    <div id="pozo-page-wrapper">
+      <!-- Lines -->
+      <div class="content-lines-wrapper">
+        <div class="content-lines-inner">
+          <div class="content-lines"></div>
+        </div>
+      </div>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <div class="logo-wrapper">
+            <a class="logo" href="index.html">
+              <img src="images/logo.png" class="logo-img" alt="" />
+            </a>
+            <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
+          </div>
+          <!-- Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+          </button>
+          <!-- Menu -->
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/services/">Services</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-expanded="false"
+                  >Gallery <i class="fa fa-angle-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/gallery/" class="dropdown-item"
+                      ><span>Image Gallery</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/video/" class="dropdown-item"
+                      ><span>Video Gallery</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link active dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-expanded="false"
+                  >Pages <i class="fa fa-angle-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/pricing/" class="dropdown-item"
+                      ><span>Pricing</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/team/" class="dropdown-item"
+                      ><span>Team</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/team-details/" class="dropdown-item"
+                      ><span>Team Details</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/faqs/" class="dropdown-item"
+                      ><span>Faq</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/project-page/" class="dropdown-item"
+                      ><span>Project Page</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/post/" class="dropdown-item"
+                      ><span>Post Page</span></a
+                    >
+                  </li>
+                  <li class="dropdown-submenu dropdown">
+                    <a
+                      class="dropdown-item active dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      data-bs-auto-close="outside"
+                      aria-expanded="false"
+                      href="#"
+                      ><span>Other Pages <i class="fa fa-angle-right"></i></span
+                    ></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="/404/" class="dropdown-item"
+                          ><span>404 Page</span></a
+                        >
+                      </li>
+                      <li>
+                        <a href="/coming-soon/" class="dropdown-item active"
+                          ><span>Coming Soon</span></a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/project/">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact/">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Coming Soon -->
+      <section class="comming pt-180 mb-60">
+        <div class="container">
+          <div class="row animate-box" data-animate-effect="fadeInUp">
+            <div class="section-head col-md-12 text-center">
+              <h4>Coming Soon!</h4>
+              <p>Website under construction</p>
+            </div>
+          </div>
+          <div
+            class="row text-center mb-20 animate-box"
+            data-animate-effect="fadeInUp"
+          >
+            <div class="col-6 offset-md-2 col-md-2">
+              <div class="item">
+                <div class="down">
+                  <h3 id="days">00</h3>
+                </div>
+                <div class="item-info">
+                  <h6 class="mb-0">Days</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-2">
+              <div class="item">
+                <div class="down">
+                  <h3 id="hours">00</h3>
+                </div>
+                <div class="item-info">
+                  <h6 class="mb-0">Hours</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-2">
+              <div class="item">
+                <div class="down">
+                  <h3 id="minutes">00</h3>
+                </div>
+                <div class="item-info">
+                  <h6 class="mb-0">Minutes</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-2">
+              <div class="item">
+                <div class="down">
+                  <h3 id="seconds">00</h3>
+                </div>
+                <div class="item-info">
+                  <h6 class="mb-0">Seconds</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="row text-center animate-box"
+            data-animate-effect="fadeInUp"
+          >
+            <div class="offset-md-3 col-md-6">
+              <p>Sign up for our latest blog & articles.</p>
+              <form>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                />
+                <button>Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer>
+        <div class="container pozo-footer-container">
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="pozo-social-icons">
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-facebook-f"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-twitter"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-instagram"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-behance"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <p class="pozo-copyright">
+                © 2025 <span>POZO</span> All right reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/scrollIt.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script type="text/javascript">
+      function countdown() {
+        var now = new Date();
+        var eventDate = new Date(2025, 11, 6);
+        var currentTiime = now.getTime();
+        var eventTime = eventDate.getTime();
+        var remTime = eventTime - currentTiime;
+        var s = Math.floor(remTime / 1000);
+        var m = Math.floor(s / 60);
+        var h = Math.floor(m / 60);
+        var d = Math.floor(h / 24);
+        h %= 24;
+        m %= 60;
+        s %= 60;
+        h = h < 10 ? "0" + h : h;
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
+        document.getElementById("days").textContent = d;
+        document.getElementById("days").innerText = d;
+        document.getElementById("hours").textContent = h;
+        document.getElementById("minutes").textContent = m;
+        document.getElementById("seconds").textContent = s;
+        setTimeout(countdown, 1000);
+      }
+      countdown();
+    </script>
+  </body>
+
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/coming-soon.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:14:00 GMT -->
+</html>

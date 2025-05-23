@@ -1,0 +1,409 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/team-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:13:00 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content=" width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <title>P O Z O</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/css/animate.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/font-awesome.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/swiper.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/jquery.fancybox.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- Page Preloader -->
+    <div id="Lfa-page-loading" class="pozo-pageloading">
+      <div class="pozo-pageloading-inner">
+        <img src="images/logo.png" class="logo" alt="" />
+      </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
+    </div>
+    <div id="pozo-page-wrapper">
+      <!-- Lines -->
+      <div class="content-lines-wrapper">
+        <div class="content-lines-inner">
+          <div class="content-lines"></div>
+        </div>
+      </div>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <div class="logo-wrapper">
+            <a class="logo" href="index.html">
+              <img src="images/logo.png" class="logo-img" alt="" />
+            </a>
+            <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
+          </div>
+          <!-- Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+          </button>
+          <!-- Menu -->
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services.html">Services</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-expanded="false"
+                  >Gallery <i class="fa fa-angle-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="gallery.html" class="dropdown-item"
+                      ><span>Image Gallery</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="video.html" class="dropdown-item"
+                      ><span>Video Gallery</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link active dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-expanded="false"
+                  >Pages <i class="fa fa-angle-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="pricing.html" class="dropdown-item"
+                      ><span>Pricing</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="team.html" class="dropdown-item"
+                      ><span>Team</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="team-details.html" class="dropdown-item active"
+                      ><span>Team Details</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="faqs.html" class="dropdown-item"
+                      ><span>Faq</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="project-page.html" class="dropdown-item"
+                      ><span>Project Page</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="post.html" class="dropdown-item"
+                      ><span>Post Page</span></a
+                    >
+                  </li>
+                  <li class="dropdown-submenu dropdown">
+                    <a
+                      class="dropdown-item dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      data-bs-auto-close="outside"
+                      aria-expanded="false"
+                      href="#"
+                      ><span>Other Pages <i class="fa fa-angle-right"></i></span
+                    ></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="404.html" class="dropdown-item"
+                          ><span>404 Page</span></a
+                        >
+                      </li>
+                      <li>
+                        <a href="coming-soon.html" class="dropdown-item"
+                          ><span>Coming Soon</span></a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="project.html">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="blog.html">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Team Details -->
+      <section class="team-box pt-180 mb-60">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-md-7 mb-30 animate-box"
+              data-animate-effect="fadeInUp"
+            >
+              <div class="img mb-60">
+                <img src="images/a.jpg" class="img-fluid" alt="" />
+              </div>
+              <h4>Anna Brown</h4>
+              <p class="mb-30">
+                I am professional photographer based on New York, creating
+                dreamscapes with black, white and shades in-between. I love to
+                pause the wild, happy and real moments of life, just to hear
+                their stories untold. Viverra tristique usto duis vitae diam
+                neque nivamus estan.
+              </p>
+              <ul class="list-unstyled team-box-list mb-60">
+                <li>
+                  <div class="team-box-list-icon">
+                    <span class="fa fa-check"></span>
+                  </div>
+                  <div class="team-box-list-text">
+                    <p>Over 10 years of experience</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="team-box-list-icon">
+                    <span class="fa fa-check"></span>
+                  </div>
+                  <div class="team-box-list-text">
+                    <p>100+ successfully executed projects</p>
+                  </div>
+                </li>
+              </ul>
+              <!-- tab -->
+              <ul
+                class="nav nav-tabs simpl-bord mt-60"
+                id="myTab"
+                role="tablist"
+              >
+                <li class="nav-item" role="presentation">
+                  <span
+                    class="nav-link active cursor-pointer"
+                    id="vision-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#biography"
+                    >Biography</span
+                  >
+                </li>
+                <li class="nav-item" role="presentation">
+                  <span
+                    class="nav-link cursor-pointer"
+                    id="mission-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#education"
+                    >Education</span
+                  >
+                </li>
+                <li class="nav-item" role="presentation">
+                  <span
+                    class="nav-link cursor-pointer"
+                    id="mission-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#awards"
+                    >Awards</span
+                  >
+                </li>
+              </ul>
+              <div class="tab-content mb-60" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="biography"
+                  role="tabpanel"
+                  aria-labelledby="vision-tab"
+                >
+                  <p>
+                    Biography utate ons amet ravida haretra nuam the duru miss
+                    uctus the drana accumsan justo aliquam sit amet auctor orci
+                    done vitaerisus duise nisan sapien silver sapien.
+                  </p>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="education"
+                  role="tabpanel"
+                  aria-labelledby="mission-tab"
+                >
+                  <p>
+                    Education utate ons amet ravida haretra nuam the duru miss
+                    uctus the drana accumsan justo aliquam sit amet auctor orci
+                    done vitaerisus duise nisan sapien silver sapien.
+                  </p>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="awards"
+                  role="tabpanel"
+                  aria-labelledby="mission-tab"
+                >
+                  <p>
+                    Awards utate ons amet ravida haretra nuam the duru miss
+                    uctus the drana accumsan justo aliquam sit amet auctor orci
+                    done vitaerisus duise nisan sapien silver sapien.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-md-4 offset-md-1 animate-box"
+              data-animate-effect="fadeInUp"
+            >
+              <div class="wrap">
+                <div class="desc">
+                  <div class="section-title mb-15">Contact Me</div>
+                  <p>
+                    I am professional photographer based on New York, creating
+                    dreamscapes with black, white and shades in-between.
+                  </p>
+                </div>
+                <div class="cont">
+                  <div class="coll">
+                    <h6>Email Us Directly</h6>
+                  </div>
+                  <div class="coll">
+                    <h5>abrown@pozo.com</h5>
+                  </div>
+                </div>
+                <div class="cont">
+                  <div class="coll">
+                    <h6>Call Us Directly</h6>
+                  </div>
+                  <div class="coll">
+                    <h5>855 100 4444 / 22</h5>
+                  </div>
+                </div>
+                <div class="cont">
+                  <div class="coll">
+                    <div class="social-icon">
+                      <a href="index.html"><i class="fa fa-facebook"></i></a>
+                      <a href="index.html"><i class="fa fa-twitter"></i></a>
+                      <a href="index.html"><i class="fa fa-instagram"></i></a>
+                      <a href="index.html"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer>
+        <div class="container pozo-footer-container">
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="pozo-social-icons">
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-facebook-f"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-twitter"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-instagram"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-behance"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <p class="pozo-copyright">
+                © 2025 <span>POZO</span> All right reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/scrollIt.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+  </body>
+
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/team-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:13:25 GMT -->
+</html>

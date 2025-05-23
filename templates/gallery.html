@@ -1,0 +1,411 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:21 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content=" width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <title>P O Z O</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/css/animate.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/font-awesome.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/swiper.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/jquery.fancybox.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- Page Preloader -->
+    <div id="Lfa-page-loading" class="pozo-pageloading">
+      <div class="pozo-pageloading-inner">
+        <img src="images/logo.png" class="logo" alt="" />
+      </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
+    </div>
+    <div id="pozo-page-wrapper">
+      <!-- Lines -->
+      <div class="content-lines-wrapper">
+        <div class="content-lines-inner">
+          <div class="content-lines"></div>
+        </div>
+      </div>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <div class="logo-wrapper">
+            <a class="logo" href="index.html">
+              <img src="images/logo.png" class="logo-img" alt="" />
+            </a>
+            <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
+          </div>
+          <!-- Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+          </button>
+          <!-- Menu -->
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about/">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="services/">Services</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link active dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-expanded="false"
+                  >Gallery <i class="fa fa-angle-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/gallery/" class="dropdown-item active"
+                      ><span>Image Gallery</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/video/" class="dropdown-item"
+                      ><span>Video Gallery</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside"
+                  aria-expanded="false"
+                  >Pages <i class="fa fa-angle-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/pricing/" class="dropdown-item"
+                      ><span>Pricing</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/team/" class="dropdown-item"><span>Team</span></a>
+                  </li>
+                  <li>
+                    <a href="/team-details/" class="dropdown-item"
+                      ><span>Team Details</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/faqs/" class="dropdown-item"><span>Faq</span></a>
+                  </li>
+                  <li>
+                    <a href="/project-page/" class="dropdown-item"
+                      ><span>Project Page</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/post/" class="dropdown-item"
+                      ><span>Post Page</span></a
+                    >
+                  </li>
+                  <li class="dropdown-submenu dropdown">
+                    <a
+                      class="dropdown-item dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      data-bs-auto-close="outside"
+                      aria-expanded="false"
+                      href="#"
+                      ><span>Other Pages <i class="fa fa-angle-right"></i></span
+                    ></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="/404/" class="dropdown-item"
+                          ><span>404 Page</span></a
+                        >
+                      </li>
+                      <li>
+                        <a href="/coming-soon/" class="dropdown-item"
+                          ><span>Coming Soon</span></a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/project/">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact/">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Gallery -->
+      <div class="pozo-section pt-130">
+        <div class="container">
+          <div class="row mb-4">
+            <div
+              class="section-head text-center col-md-12 animate-box"
+              data-animate-effect="fadeInUp"
+            >
+              <h4>Image Gallery</h4>
+            </div>
+            <div class="animate-box row" data-animate-effect="fadeInUp">
+              {% for image in images %}
+              <div class="col-md-4">
+                <figure>
+                  <a
+                    class="d-block mb-4"
+                    data-fancybox="images"
+                    href="{{ image.image.url }}"
+                    data-caption="Quisque in felis"
+                  >
+                    <img class="img-fluid" src="{{ image.image.url }}" alt="" />
+                  </a>
+                </figure>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row mb-4 align-items-stretch mt-60">
+            <div class="col-12">
+              {% if has_more %}
+              <div
+                class="pozo-more-wrapper txt-center animate-box"
+                data-animate-effect="fadeInUp"
+              >
+                <a
+                  href="#"
+                  id="load-more-btn"
+                  class="pozo-more-trigger flex"
+                  data-page="2"
+                >
+                  <span class="plus flex-center">&nbsp;</span>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+        <div class="container pozo-footer-container">
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="pozo-social-icons">
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-facebook-f"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-twitter"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-instagram"></span>
+                  </a>
+                </li>
+                <li class="pozo-social-icons-item">
+                  <a class="pozo-social-link" href="index.html#">
+                    <span class="pozo-social-icon fa fa-behance"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <p class="pozo-copyright">
+                © 2025 <span>POZO</span> All right reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/scrollIt.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script id="images-data" type="application/json">
+      {{ images_json|safe }}
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function updateDebug(message) {
+          const debugElement = document.getElementById("debug-content");
+          const timestamp = new Date().toLocaleTimeString();
+          debugElement.innerHTML = `[${timestamp}] ${message}`;
+        }
+
+        updateDebug("Script initialized");
+
+        function addImageToGallery(imageObj, index) {
+          updateDebug(
+            `Adding image ${index}: ${imageObj.image_url || imageObj.url}`
+          );
+
+          const galleryContainer = document.getElementById("gallery-container");
+          if (!galleryContainer) {
+            updateDebug("ERROR: Gallery container not found!");
+            return;
+          }
+
+          const colDiv = document.createElement("div");
+          colDiv.className = "col-md-4 gallery-item";
+
+          const img = document.createElement("img");
+          img.className = "img-fluid";
+          img.src =
+            imageObj.image_url ||
+            imageObj.url ||
+            `https://picsum.photos/400/300?random=${Date.now()}-${index}`;
+          img.alt = `Gallery Image ${imageObj.id || index}`;
+
+          img.onload = function () {
+            updateDebug(`Image loaded: ${this.src}`);
+            setTimeout(() => {
+              colDiv.classList.add("loaded");
+            }, 100);
+          };
+
+          img.onerror = function () {
+            updateDebug(`ERROR: Failed to load image: ${this.src}`);
+            this.src = `https://picsum.photos/400/300?random=error-${Date.now()}`;
+          };
+
+          colDiv.appendChild(img);
+          galleryContainer.appendChild(colDiv);
+
+          updateDebug(`Image element added to DOM`);
+        }
+
+        const loadMoreBtn = document.getElementById("load-more-btn");
+        updateDebug(`Load more button found: ${loadMoreBtn ? "Yes" : "No"}`);
+
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            updateDebug("Load more button clicked");
+
+            const nextPage = parseInt(this.dataset.page) || 2;
+            const button = this;
+
+            button.classList.add("loading");
+            button.style.pointerEvents = "none";
+            updateDebug(`Loading page: ${nextPage}`);
+
+            setTimeout(() => {
+              const mockImages = [];
+              const startIndex = (nextPage - 1) * 3;
+
+              for (let i = 0; i < 3; i++) {
+                mockImages.push({
+                  id: startIndex + i + 1,
+                  image_url: `https://picsum.photos/400/300?random=${
+                    startIndex + i + 10
+                  }`,
+                  url: `https://picsum.photos/400/300?random=${
+                    startIndex + i + 10
+                  }`,
+                });
+              }
+
+              updateDebug(`Mock data generated: ${mockImages.length} images`);
+
+              if (mockImages && mockImages.length > 0) {
+                mockImages.forEach((imageObj, index) => {
+                  addImageToGallery(imageObj, startIndex + index);
+                });
+                updateDebug(`Added ${mockImages.length} new images`);
+              }
+
+              button.classList.remove("loading");
+
+              if (nextPage < 5) {
+                button.dataset.page = nextPage + 1;
+                button.style.pointerEvents = "auto";
+                updateDebug(`Next page will be: ${nextPage + 1}`);
+              } else {
+                button.closest(".pozo-more-wrapper").style.display = "none";
+                updateDebug("No more images, button hidden");
+              }
+            }, 1000);
+          });
+        }
+
+        updateDebug("Setup completed");
+      });
+    </script>
+  </body>
+
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:21 GMT -->
+</html>
