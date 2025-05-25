@@ -12,7 +12,8 @@ class ImageGalleryAdmin(admin.ModelAdmin):
     readonly_fields = ['image_preview', 'created_at']
     ordering = ['order', '-created_at']
 
-    fields = ('image', 'image_preview', 'is_active', 'order', 'created_at')
+    fields = ('image', 'image_preview', 'is_active',
+              'order', 'created_at', 'in_home')
 
     def image_preview(self, obj):
         if obj.image:

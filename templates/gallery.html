@@ -74,7 +74,7 @@
         <div class="container">
           <!-- Logo -->
           <div class="logo-wrapper">
-            <a class="logo" href="index.html">
+            <a class="logo" href="/">
               <img src="images/logo.png" class="logo-img" alt="" />
             </a>
             <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
@@ -98,10 +98,10 @@
                 <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about/">About</a>
+                <a class="nav-link" href="/about/">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="services/">Services</a>
+                <a class="nav-link" href="/services/">Services</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -208,232 +208,74 @@
               class="section-head text-center col-md-12 animate-box"
               data-animate-effect="fadeInUp"
             >
-              <h4>Image Gallery</h4>
+              <h4>Rəsmlər</h4>
             </div>
             <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+              {% for image in images %}
+              {% if forloop.counter0|divisibleby:3 %}
               <figure>
                 <a
                   class="d-block mb-4"
                   data-fancybox="images"
-                  href="images/gallery/01.jpg"
-                  data-caption="Quisque in felis"
+                  href="{{ image.image.url }}"
+                  data-caption="Gallery Image {{ forloop.counter }}"
                 >
-                  <img class="img-fluid" src="images/gallery/01.jpg" alt="" />
+                  <img
+                    class="img-fluid"
+                    src="{{ image.image.url }}"
+                    alt="Gallery Image {{ forloop.counter }}"
+                  />
                 </a>
               </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/02.jpg"
-                  data-caption="Pellentesque habitant"
-                >
-                  <img class="img-fluid" src="images/gallery/02.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/11.jpg"
-                  data-caption="Curabitur convallis"
-                >
-                  <img class="img-fluid" src="images/gallery/11.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/03.jpg"
-                  data-caption="Quisque in dolor"
-                >
-                  <img class="img-fluid" src="images/gallery/03.jpg" alt="" />
-                </a>
-              </figure>
+              {% endif %}
+              {% endfor %}
             </div>
+
+            <!-- İkinci Kolon: İndex 1,4,7,10 (mod 3 = 1) -->
             <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+              {% for image in images %} 
+              {% if forloop.counter0|add:"2"|divisibleby:3 %}
               <figure>
                 <a
                   class="d-block mb-4"
                   data-fancybox="images"
-                  href="images/gallery/18.jpg"
-                  data-caption="Aliquam non luctus"
+                  href="{{ image.image.url }}"
+                  data-caption="Gallery Image {{ forloop.counter }}"
                 >
-                  <img class="img-fluid" src="images/gallery/18.jpg" alt="" />
+                  <img
+                    class="img-fluid"
+                    src="{{ image.image.url }}"
+                    alt="Gallery Image {{ forloop.counter }}"
+                  />
                 </a>
               </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/17.jpg"
-                  data-caption="Quality in felis"
-                >
-                  <img class="img-fluid" src="images/gallery/17.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/16.jpg"
-                  data-caption="Vivamus a nisi"
-                >
-                  <img class="img-fluid" src="images/gallery/16.jpg" alt="" />
-                </a>
-              </figure>
+              {% endif %}
+               {% endfor %}
             </div>
+
+            <!-- Üçüncü Kolon: İndex 2,5,8 (mod 3 = 2) -->
             <div
               class="col-md-4 d-none d-lg-block animate-box"
               data-animate-effect="fadeInUp"
             >
+              {% for image in images %} 
+              {% if forloop.counter0|add:"1"|divisibleby:3 %}
               <figure>
                 <a
                   class="d-block mb-4"
                   data-fancybox="images"
-                  href="images/gallery/08.jpg"
-                  data-caption="Mauris pretium"
+                  href="{{ image.image.url }}"
+                  data-caption="Gallery Image {{ forloop.counter }}"
                 >
-                  <img class="img-fluid" src="images/gallery/08.jpg" alt="" />
+                  <img
+                    class="img-fluid"
+                    src="{{ image.image.url }}"
+                    alt="Gallery Image {{ forloop.counter }}"
+                  />
                 </a>
               </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/09.jpg"
-                  data-caption="Nunc blandit purus"
-                >
-                  <img class="img-fluid" src="images/gallery/09.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/07.jpg"
-                  data-caption="Nunc ultrices tellus"
-                >
-                  <img class="img-fluid" src="images/gallery/07.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/19.jpg"
-                  data-caption="Orci varius natoque"
-                >
-                  <img class="img-fluid" src="images/gallery/19.jpg" alt="" />
-                </a>
-              </figure>
-            </div>
-          </div>
-          <div class="row mb-4 align-items-stretch mt-60">
-            <div class="col-12">
-              <!-- show more -->
-              <div class="pozo-show-more-container">
-                <div
-                  class="row align-items-stretch pozo-photos"
-                  id="pozo-section-photos"
-                >
-                  <div
-                    class="col-md-4 animate-box"
-                    data-animate-effect="fadeInUp"
-                  >
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/12.jpg"
-                        data-caption="Vestibulum leo velit"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/12.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/05.jpg"
-                        data-caption="Etiam imperdiet hendrerit"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/05.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                  </div>
-                  <div
-                    class="col-md-4 animate-box"
-                    data-animate-effect="fadeInUp"
-                  >
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/13.jpg"
-                        data-caption="Nulla turpis elementum"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/13.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/06.jpg"
-                        data-caption="Pellentesque habitant"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/06.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                  </div>
-                  <div
-                    class="col-md-4 d-none d-lg-block animate-box"
-                    data-animate-effect="fadeInUp"
-                  >
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/14.jpg"
-                        data-caption="Quisque in felis"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/14.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-              <!-- add more -->
-              <div
-                class="pozo-more-wrapper txt-center animate-box"
-                data-animate-effect="fadeInUp"
-              >
-                <a href="index.html#" class="pozo-more-trigger flex">
-                  <span class="plus flex-center">&nbsp;</span>
-                </a>
-              </div>
+              {% endif %} 
+              {% endfor %}
             </div>
           </div>
         </div>

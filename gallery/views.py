@@ -10,9 +10,9 @@ def gallery_view(request):
     images = ImageGallery.objects.filter(is_active=True).order_by(
         '-created_at')
 
-    initial_images = images[:1]
+    initial_images = images[:11]
     total_count = images.count()
-    has_more = total_count > 1
+    has_more = total_count > 11
 
     images_data = []
     for image in initial_images:

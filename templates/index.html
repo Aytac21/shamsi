@@ -13,6 +13,11 @@
       rel="stylesheet"
     />
     <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link
       href="{% static 'assets/css/animate.css' %}"
       rel="stylesheet"
       type="text/css"
@@ -27,11 +32,11 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link
+    <!-- <link
       href="{% static 'assets/css/swiper.css' %}"
       rel="stylesheet"
       type="text/css"
-    />
+    /> -->
     <link
       href="{% static 'assets/css/jquery.fancybox.min.css' %}"
       rel="stylesheet"
@@ -211,144 +216,52 @@
           </div>
         </div>
       </nav>
-      <!-- Slider -->
+      <!-- Dark Image  -->
       <div class="container">
         <section class="pozo-section-slider pt-130">
           <div class="next-container-center">
-            <div class="swiper-container">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="swiper-slide-block">
-                    <div
-                      class="swiper-slide-block-img animate-box"
-                      data-animate-effect="fadeInLeft"
-                      data-swiper-parallax-y="70%"
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="swiper-slide-block">
+                  <div
+                    class="swiper-slide-block-img animate-box"
+                    data-animate-effect="fadeInLeft"
+                    data-swiper-parallax-y="70%"
+                  >
+                    <a href="{{ header.url }}" target="_blank">
+                      <img
+                        src="{{ header.image.url }}"
+                        alt="{{ header.title }}"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                  <div
+                    class="swiper-slide-block-text animate-box"
+                    data-animate-effect="fadeInRight"
+                  >
+                    <h2 data-swiper-parallax-x="-60%" class="next-main-title">
+                      {{ header.title }}
+                    </h2>
+                    <h3
+                      data-swiper-parallax-x="-50%"
+                      class="next-main-subtitle"
                     >
-                      <a href="project-page.html">
-                        <img src="images/slider/2.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div
-                      class="swiper-slide-block-text animate-box"
-                      data-animate-effect="fadeInRight"
+                      {{ header.category }}
+                    </h3>
+                    <p data-swiper-parallax-x="-40%" class="next-paragraph">
+                      {{ header.description }}
+                    </p>
+                    <a
+                      data-swiper-parallax-x="-30%"
+                      style="z-index: 5"
+                      class="next-link"
+                      href="{{ header.url }}"
+                      target="_blank"
+                      >About Me</a
                     >
-                      <h2 data-swiper-parallax-x="-60%" class="next-main-title">
-                        Anna Lussen
-                      </h2>
-                      <h3
-                        data-swiper-parallax-x="-50%"
-                        class="next-main-subtitle"
-                      >
-                        Model, Moscow
-                      </h3>
-                      <p data-swiper-parallax-x="-40%" class="next-paragraph">
-                        Quisque pellentesque odio ut libero iaculis, nec
-                        fringilla sapien tincidunt. Sed laoree nulvinar ex sed
-                        estas in duru rana.
-                      </p>
-                      <a
-                        data-swiper-parallax-x="-30%"
-                        style="z-index: 5"
-                        class="next-link"
-                        href="project-page.html"
-                        >View Details</a
-                      >
-                      <span data-swiper-parallax-y="60%" class="next-number"
-                        >1</span
-                      >
-                    </div>
                   </div>
                 </div>
-                <div class="swiper-slide">
-                  <div class="swiper-slide-block">
-                    <div
-                      class="swiper-slide-block-img"
-                      data-swiper-parallax-y="70%"
-                    >
-                      <a href="project-page-2.html"
-                        ><img src="images/slider/1.jpg" alt=""
-                      /></a>
-                    </div>
-                    <div class="swiper-slide-block-text">
-                      <h2 data-swiper-parallax-x="-60%" class="next-main-title">
-                        Tomas & Isabel
-                      </h2>
-                      <h3
-                        data-swiper-parallax-x="-50%"
-                        class="next-main-subtitle"
-                      >
-                        Wedding, Norwalk
-                      </h3>
-                      <p data-swiper-parallax-x="-40%" class="next-paragraph">
-                        Quisque pellentesque odio ut libero iaculis, nec
-                        fringilla sapien tincidunt. Sed laoree nulvinar ex sed
-                        estas in duru rana.
-                      </p>
-                      <a
-                        data-swiper-parallax-x="-30%"
-                        class="next-link"
-                        href="project-page-2.html"
-                        >View Details</a
-                      >
-                      <span
-                        data-swiper-parallax-y="60%"
-                        class="next-number animate-box"
-                        data-animate-effect="fadeInUp"
-                        >2</span
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="swiper-slide-block">
-                    <div
-                      class="swiper-slide-block-img"
-                      data-swiper-parallax-y="70%"
-                    >
-                      <a href="project-page-2.html">
-                        <img src="images/gallery/21.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div class="swiper-slide-block-text">
-                      <h2 data-swiper-parallax-x="-60%" class="next-main-title">
-                        Jenna & James
-                      </h2>
-                      <h3
-                        data-swiper-parallax-x="-50%"
-                        class="next-main-subtitle"
-                      >
-                        Wedding, London
-                      </h3>
-                      <p data-swiper-parallax-x="-40%" class="next-paragraph">
-                        Quisque pellentesque odio ut libero iaculis, nec
-                        fringilla sapien tincidunt. Sed laoree nulvinar ex sed
-                        estas in duru rana.
-                      </p>
-                      <a
-                        data-swiper-parallax-x="-30%"
-                        class="next-link"
-                        href="https://1.envato.market/e6o9j"
-                        target="_blank"
-                        >Buy Now</a
-                      >
-                      <span data-swiper-parallax-y="60%" class="next-number"
-                        >3</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="swiper-button-next animate-box"
-                data-animate-effect="fadeInRight"
-              >
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </div>
-              <div
-                class="swiper-button-prev animate-box"
-                data-animate-effect="fadeInLeft"
-              >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
               </div>
             </div>
           </div>
@@ -357,240 +270,35 @@
       <!-- Gallery -->
       <div class="pozo-section">
         <div class="container">
-          <div class="row mb-4">
+          <div class="home-container">
             <div
               class="section-head text-center col-md-12 animate-box"
               data-animate-effect="fadeInUp"
             >
-              <h4>Recent <span>Shots</span></h4>
+              <h4>Şəkillər</h4>
             </div>
-            <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/01.jpg"
-                  data-caption="Quisque in felis"
-                >
-                  <img class="img-fluid" src="images/gallery/01.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/02.jpg"
-                  data-caption="Pellentesque habitant"
-                >
-                  <img class="img-fluid" src="images/gallery/02.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/11.jpg"
-                  data-caption="Curabitur convallis"
-                >
-                  <img class="img-fluid" src="images/gallery/11.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/03.jpg"
-                  data-caption="Quisque in dolor"
-                >
-                  <img class="img-fluid" src="images/gallery/03.jpg" alt="" />
-                </a>
-              </figure>
-            </div>
-            <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/18.jpg"
-                  data-caption="Aliquam non luctus"
-                >
-                  <img class="img-fluid" src="images/gallery/18.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/17.jpg"
-                  data-caption="Quality in felis"
-                >
-                  <img class="img-fluid" src="images/gallery/17.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/16.jpg"
-                  data-caption="Vivamus a nisi"
-                >
-                  <img class="img-fluid" src="images/gallery/16.jpg" alt="" />
-                </a>
-              </figure>
-            </div>
-            <div
-              class="col-md-4 d-none d-lg-block animate-box"
-              data-animate-effect="fadeInUp"
-            >
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/08.jpg"
-                  data-caption="Mauris pretium"
-                >
-                  <img class="img-fluid" src="images/gallery/08.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/09.jpg"
-                  data-caption="Nunc blandit purus"
-                >
-                  <img class="img-fluid" src="images/gallery/09.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/07.jpg"
-                  data-caption="Nunc ultrices tellus"
-                >
-                  <img class="img-fluid" src="images/gallery/07.jpg" alt="" />
-                </a>
-              </figure>
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="images/gallery/19.jpg"
-                  data-caption="Orci varius natoque"
-                >
-                  <img class="img-fluid" src="images/gallery/19.jpg" alt="" />
-                </a>
-              </figure>
+            <div class="home-page">
+              <div class="swiper-container">
+                <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    {% for image in images %}
+                    <div class="swiper-slide">
+                      <img src="{{ image.image.url }}" loading="lazy" />
+                    </div>
+                    {% endfor %}
+                  </div>
+
+                  <!-- Navigation buttons -->
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+
+                  <!-- Progress bar -->
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
             </div>
           </div>
           <!-- show more -->
-          <div class="row mb-4 align-items-stretch mt-60">
-            <div class="col-12">
-              <!-- show more -->
-              <div class="pozo-show-more-container">
-                <div
-                  class="row align-items-stretch pozo-photos"
-                  id="pozo-section-photos"
-                >
-                  <div
-                    class="col-md-4 animate-box"
-                    data-animate-effect="fadeInUp"
-                  >
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/12.jpg"
-                        data-caption="Vestibulum leo velit"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/12.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/05.jpg"
-                        data-caption="Etiam imperdiet hendrerit"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/05.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                  </div>
-                  <div
-                    class="col-md-4 animate-box"
-                    data-animate-effect="fadeInUp"
-                  >
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/13.jpg"
-                        data-caption="Nulla turpis elementum"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/13.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/06.jpg"
-                        data-caption="Pellentesque habitant"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/06.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                  </div>
-                  <div
-                    class="col-md-4 d-none d-lg-block animate-box"
-                    data-animate-effect="fadeInUp"
-                  >
-                    <figure>
-                      <a
-                        class="d-block mb-4"
-                        data-fancybox="images"
-                        href="images/gallery/14.jpg"
-                        data-caption="Quisque in felis"
-                      >
-                        <img
-                          class="img-fluid"
-                          src="images/gallery/14.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-              <!-- add more -->
-              <div
-                class="pozo-more-wrapper txt-center animate-box"
-                data-animate-effect="fadeInUp"
-              >
-                <a href="index.html#" class="pozo-more-trigger flex">
-                  <span class="plus flex-center">&nbsp;</span>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <!-- Footer -->
@@ -636,9 +344,103 @@
     <script src="{% static 'assets/js/plugins/scrollIt.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/modernizr-2.6.2.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
+    <!-- <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script> -->
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      let swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        spaceBetween: 30,
+        coverflowEffect: {
+          rotate: 15,
+          stretch: 25,
+          depth: 250,
+          modifier: 1,
+          // slideShadows: true,
+        },
+        loop: true,
+
+        autoplay: {
+          delay: 1000,
+          pauseOnMouseEnter: true,
+        },
+
+        // Klavye kontrolü
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+
+        // Mouse wheel kontrolü
+        mousewheel: {
+          invert: false,
+        },
+
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        // Progress bar
+        pagination: {
+          // el: ".swiper-pagination",
+          type: "progressbar",
+        },
+
+        // Responsive breakpoints
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            coverflowEffect: {
+              rotate: 10,
+              stretch: 15,
+              depth: 200,
+            },
+          },
+          768: {
+            slidesPerView: "auto",
+            spaceBetween: 30,
+            coverflowEffect: {
+              rotate: 15,
+              stretch: 25,
+              depth: 250,
+            },
+          },
+        },
+
+        // Event listeners
+        on: {
+          init: function () {
+            console.log("Swiper initialized");
+          },
+          slideChange: function () {
+            console.log("Slide changed to:", this.activeIndex);
+          },
+        },
+      });
+
+      // Swiper'ı manuel olarak durdurup başlatma kontrolü
+      document.addEventListener("keydown", function (e) {
+        if (e.code === "Space") {
+          e.preventDefault();
+          if (swiper.autoplay.running) {
+            swiper.autoplay.stop();
+            document.querySelector(".autoplay-indicator span").textContent =
+              "Durakladı";
+          } else {
+            swiper.autoplay.start();
+            document.querySelector(".autoplay-indicator span").textContent =
+              "Otomatik Oynatılıyor";
+          }
+        }
+      });
+    </script>
   </body>
 
   <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:10:57 GMT -->
