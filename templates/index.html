@@ -53,7 +53,7 @@
     <!-- Page Preloader -->
     <div id="Lfa-page-loading" class="pozo-pageloading">
       <div class="pozo-pageloading-inner">
-        <img src="images/logo.png" class="logo" alt="" />
+        <img src="{% static 'logo.svg' %}" class="logo-img" alt="" />
       </div>
     </div>
     <!-- Progress scroll totop -->
@@ -86,136 +86,7 @@
         </div>
       </div>
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <!-- Logo -->
-          <div class="logo-wrapper">
-            <a class="logo" href="index.html">
-              <img src="images/logo.png" class="logo-img" alt="" />
-            </a>
-            <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
-          </div>
-          <!-- Button -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbar"
-            aria-controls="navbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
-          </button>
-          <!-- Menu -->
-          <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about/">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/services/">Services</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  data-bs-auto-close="outside"
-                  aria-expanded="false"
-                  >Gallery <i class="fa fa-angle-down"></i
-                ></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="/gallery/" class="dropdown-item"
-                      ><span>Image Gallery</span></a
-                    >
-                  </li>
-                  <li>
-                    <a href="/video/" class="dropdown-item"
-                      ><span>Video Gallery</span></a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  data-bs-auto-close="outside"
-                  aria-expanded="false"
-                  >Pages <i class="fa fa-angle-down"></i
-                ></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="/pricing/" class="dropdown-item"
-                      ><span>Pricing</span></a
-                    >
-                  </li>
-                  <li>
-                    <a href="/team/" class="dropdown-item"><span>Team</span></a>
-                  </li>
-                  <li>
-                    <a href="/team-details/" class="dropdown-item"
-                      ><span>Team Details</span></a
-                    >
-                  </li>
-                  <li>
-                    <a href="/faqs/" class="dropdown-item"><span>Faq</span></a>
-                  </li>
-                  <li>
-                    <a href="/project-page/" class="dropdown-item"
-                      ><span>Project Page</span></a
-                    >
-                  </li>
-                  <li>
-                    <a href="/post/" class="dropdown-item"
-                      ><span>Post Page</span></a
-                    >
-                  </li>
-                  <li class="dropdown-submenu dropdown">
-                    <a
-                      class="dropdown-item dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                      data-bs-auto-close="outside"
-                      aria-expanded="false"
-                      href="#"
-                      ><span>Other Pages <i class="fa fa-angle-right"></i></span
-                    ></a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a href="/404/" class="dropdown-item"
-                          ><span>404 Page</span></a
-                        >
-                      </li>
-                      <li>
-                        <a href="/coming-soon/" class="dropdown-item"
-                          ><span>Coming Soon</span></a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/project/">Projects</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/blog/">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/contact/">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      {% include 'components/navbar.html' %}
       <!-- Dark Image  -->
       <div class="container">
         <section class="pozo-section-slider pt-130">
@@ -258,7 +129,7 @@
                       class="next-link"
                       href="{{ header.url }}"
                       target="_blank"
-                      >About Me</a
+                      >Haqqında</a
                     >
                   </div>
                 </div>
@@ -355,6 +226,7 @@
         centeredSlides: true,
         slidesPerView: "auto",
         spaceBetween: 30,
+        speed: 1000,
         coverflowEffect: {
           rotate: 15,
           stretch: 25,
@@ -365,7 +237,7 @@
         loop: true,
 
         autoplay: {
-          delay: 1000,
+          delay: 1200,
           pauseOnMouseEnter: true,
         },
 
@@ -388,7 +260,6 @@
 
         // Progress bar
         pagination: {
-          // el: ".swiper-pagination",
           type: "progressbar",
         },
 

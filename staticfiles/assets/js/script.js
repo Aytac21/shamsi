@@ -31,10 +31,10 @@
       logo = $(".navbar .logo> img");
     if (bodyScroll > 100) {
       navbar.addClass("nav-scroll");
-      logo.attr("src", "images/logo.png");
+      logo.attr("../../logo.svg");
     } else {
       navbar.removeClass("nav-scroll");
-      logo.attr("src", "images/logo.png");
+      logo.attr("../../logo.svg");
     }
   });
   // close navbar-collapse when a  clicked

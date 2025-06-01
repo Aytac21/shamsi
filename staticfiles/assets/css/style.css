@@ -606,7 +606,7 @@ a {
   color: #999;
 }
 .nav-scroll .logo-img {
-  width: 115px;
+  width: 95px;
   padding: 15px 0;
 }
 .nav-scroll .logo-img {
@@ -674,8 +674,9 @@ a {
   padding: 0;
 }
 .logo-img {
+  filter: brightness(1.5);
   padding: 20px 0;
-  width: 115px;
+  width: 95px;
   text-align: center;
 }
 .dropdown .nav-link i {
@@ -2468,9 +2469,12 @@ ul.team-info-social li {
 }
 
 .home-page .swiper {
+  padding: 20px 0px 0px 0px;
   width: 100%;
 }
-
+.swiper {
+  overflow: visible !important;
+}
 .home-page .swiper-slide {
   background-position: center;
   background-size: cover;
@@ -2492,8 +2496,7 @@ ul.team-info-social li {
 }
 
 .home-page .swiper-slide-active {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-  transform: scale(1.05);
+  transform: scale(1.05) !important;
 }
 
 /* Progress bar */
@@ -2595,4 +2598,16 @@ ul.team-info-social li {
 
 .about-content h4 {
     line-height: 1rem;
+}
+
+.about-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.about-title h1{
+  font-size: 40px !important
 }
