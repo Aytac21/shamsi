@@ -1,7 +1,6 @@
-{% load static %}
+{% load static %} {% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:10:37 GMT -->
+<html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -121,7 +120,7 @@
                       {{ header.category }}
                     </h3>
                     <p data-swiper-parallax-x="-40%" class="next-paragraph">
-                      {{ header.description }}
+                      {{ header.description|slice:":300" }}
                     </p>
                     <a
                       data-swiper-parallax-x="-30%"
@@ -129,7 +128,7 @@
                       class="next-link"
                       href="{{ header.url }}"
                       target="_blank"
-                      >Haqqında</a
+                      >{% trans "Haqqında" %}</a
                     >
                   </div>
                 </div>
@@ -143,11 +142,15 @@
         <div class="container">
           <div class="home-container">
             <div
-              class="section-head text-center col-md-12 animate-box"
+              class="section-head gallery-arrow text-center col-md-12 animate-box"
               data-animate-effect="fadeInUp"
             >
-              <h4>Şəkillər</h4>
+              <a href="#" class="gallery-link" onclick="navigateToGallery()">
+                <h4>Şəkillər</h4>
+                <span class="arrow-icon">→</span>
+              </a>
             </div>
+
             <div class="home-page">
               <div class="swiper-container">
                 <div class="swiper mySwiper">
@@ -173,41 +176,7 @@
         </div>
       </div>
       <!-- Footer -->
-      <footer>
-        <div class="container pozo-footer-container">
-          <div class="row">
-            <div class="col-md-8">
-              <ul class="pozo-social-icons">
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-facebook-f"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-instagram"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-behance"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <p class="pozo-copyright">
-                © 2025 <span>POZO</span> All right reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {% include 'components/footer.html' %}
     </div>
     <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
@@ -219,6 +188,7 @@
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'assets/js/locale.js' %}"></script>
     <script>
       let swiper = new Swiper(".mySwiper", {
         effect: "coverflow",
@@ -311,6 +281,62 @@
           }
         }
       });
+    </script>
+    <script>
+      function navigateToGallery() {
+        function getCurrentLanguage() {
+          const currentPath = window.location.pathname;
+          if (currentPath.startsWith("/az/") || currentPath === "/az") {
+            return "az";
+          } else if (currentPath.startsWith("/ru/") || currentPath === "/ru") {
+            return "ru";
+          }
+          return "en"; 
+        }
+
+        const savedLang =
+          localStorage.getItem("selected_language") || getCurrentLanguage();
+
+        let galleryUrl = "/gallery";
+
+        if (savedLang === "az") {
+          galleryUrl = "/az/gallery";
+        } else if (savedLang === "ru") {
+          galleryUrl = "/ru/gallery";
+        } else {
+          galleryUrl = "/gallery"; 
+        }
+
+        console.log("Navigating to gallery:", galleryUrl);
+        window.location.href = galleryUrl;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const animateBox = document.querySelector(".animate-box");
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationDelay = "0.2s";
+              entry.target.classList.add("animate-box");
+            }
+          });
+        });
+
+        observer.observe(animateBox);
+      });
+
+      document
+        .querySelector(".gallery-link")
+        .addEventListener("mouseenter", function () {
+          this.style.boxShadow = "0 5px 15px rgba(0,0,0,0.1)";
+        });
+
+      document
+        .querySelector(".gallery-link")
+        .addEventListener("mouseleave", function () {
+          this.style.boxShadow = "none";
+        });
     </script>
   </body>
 

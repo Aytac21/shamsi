@@ -1,12 +1,19 @@
 from django.contrib import admin
-from .models import Service
+from .models import Publication, PublicationImages
+from modeltranslation.admin import TranslationAdmin
 
 
-@admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
+class PublicationImagesInline(admin.TabularInline):
+    model = PublicationImages
+    extra = 3
+
+
+@admin.register(Publication)
+class PublicationAdmin(TranslationAdmin):
     list_display = ['title', 'description']
     list_filter = ['title']
     search_fields = ['title', 'description']
+    inlines = [PublicationImagesInline]
 
     class Media:
         js = (
@@ -17,3 +24,9 @@ class ServiceAdmin(admin.ModelAdmin):
         css = {
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
+
+
+@admin.register(PublicationImages)
+class PublicationImagesAdmin(admin.ModelAdmin):
+    list_display = ['publication', 'image']
+    list_filter = ['publication']

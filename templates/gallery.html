@@ -1,13 +1,12 @@
-{% load static %}
+{% load static %} {% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:21 GMT -->
+<html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content=" width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
-    <title>P O Z O</title>
+    <title>P O Z O - Gallery</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
       rel="stylesheet"
@@ -51,6 +50,7 @@
         <img src="images/logo.png" class="logo" alt="" />
       </div>
     </div>
+    
     <!-- Progress scroll totop -->
     <div class="progress-wrap cursor-pointer">
       <svg
@@ -62,6 +62,7 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
       </svg>
     </div>
+    
     <div id="pozo-page-wrapper">
       <!-- Lines -->
       <div class="content-lines-wrapper">
@@ -69,125 +70,137 @@
           <div class="content-lines"></div>
         </div>
       </div>
+      
       <!-- Navbar -->
       {% include 'components/navbar.html' %}
+      
       <!-- Gallery -->
       <div class="pozo-section pt-130">
         <div class="container">
+          <!-- Section Header -->
           <div class="row mb-4">
-            <div
-              class="section-head text-center col-md-12 animate-box"
-              data-animate-effect="fadeInUp"
-            >
+            <div class="section-head text-center col-md-12 animate-box" data-animate-effect="fadeInUp">
               <h4>Rəsmlər</h4>
             </div>
-            <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              {% for image in images %}
-              {% if forloop.counter0|divisibleby:3 %}
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="{{ image.image.url }}"
-                  data-caption="Gallery Image {{ forloop.counter }}"
-                >
-                  <img
-                    class="img-fluid"
-                    src="{{ image.image.url }}"
-                    alt="Gallery Image {{ forloop.counter }}"
-                  />
+          </div>
+          
+          <!-- Category Filters -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="pozo-gallery-filters animate-box" data-animate-effect="fadeInUp">
+                <a href="?category=all" 
+                   class="pozo-filter-btn {% if active_category == 'all' %}active{% endif %}" 
+                   data-category="all">
+                  Hamısı
                 </a>
-              </figure>
-              {% endif %}
+                {% for category in categories %}
+                <a href="?category={{ category.slug }}" 
+                   class="pozo-filter-btn {% if active_category == category.slug %}active{% endif %}" 
+                   data-category="{{ category.slug }}">
+                  {{ category.name }}
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gallery Grid -->
+          <div class="row mb-4" id="gallery-container">
+            <!-- First Column: Index 0,3,6,9 (mod 3 = 0) -->
+            <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+              {% for image in images %} 
+                {% if forloop.counter0|divisibleby:3 %}
+                <figure class="gallery-figure">
+                  <a
+                    class="d-block mb-4"
+                    data-fancybox="images"
+                    href="{{ image.image.url }}"
+                    data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                  >
+                    <div class="gallery-frame">
+                      <img
+                        class="img-fluid gallery-img"
+                        src="{{ image.image.url }}"
+                        alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                      />
+                    </div>
+                  </a>
+                </figure>
+                {% endif %} 
               {% endfor %}
             </div>
 
-            <!-- İkinci Kolon: İndex 1,4,7,10 (mod 3 = 1) -->
+            <!-- Second Column: Index 1,4,7,10 (mod 3 = 1) -->
             <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
               {% for image in images %} 
-              {% if forloop.counter0|add:"2"|divisibleby:3 %}
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="{{ image.image.url }}"
-                  data-caption="Gallery Image {{ forloop.counter }}"
-                >
-                  <img
-                    class="img-fluid"
-                    src="{{ image.image.url }}"
-                    alt="Gallery Image {{ forloop.counter }}"
-                  />
-                </a>
-              </figure>
-              {% endif %}
-               {% endfor %}
+                {% if forloop.counter0|add:"2"|divisibleby:3 %}
+                <figure class="gallery-figure">
+                  <a
+                    class="d-block mb-4"
+                    data-fancybox="images"
+                    href="{{ image.image.url }}"
+                    data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                  >
+                    <div class="gallery-frame">
+                      <img
+                        class="img-fluid gallery-img"
+                        src="{{ image.image.url }}"
+                        alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                      />
+                    </div>
+                  </a>
+                </figure>
+                {% endif %} 
+              {% endfor %}
             </div>
 
-            <!-- Üçüncü Kolon: İndex 2,5,8 (mod 3 = 2) -->
-            <div
-              class="col-md-4 d-none d-lg-block animate-box"
-              data-animate-effect="fadeInUp"
-            >
+            <!-- Third Column: Index 2,5,8 (mod 3 = 2) -->
+            <div class="col-md-4 d-none d-lg-block animate-box" data-animate-effect="fadeInUp">
               {% for image in images %} 
-              {% if forloop.counter0|add:"1"|divisibleby:3 %}
-              <figure>
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="{{ image.image.url }}"
-                  data-caption="Gallery Image {{ forloop.counter }}"
-                >
-                  <img
-                    class="img-fluid"
-                    src="{{ image.image.url }}"
-                    alt="Gallery Image {{ forloop.counter }}"
-                  />
-                </a>
-              </figure>
-              {% endif %} 
+                {% if forloop.counter0|add:"1"|divisibleby:3 %}
+                <figure class="gallery-figure">
+                  <a
+                    class="d-block mb-4"
+                    data-fancybox="images"
+                    href="{{ image.image.url }}"
+                    data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                  >
+                    <div class="gallery-frame">
+                      <img
+                        class="img-fluid gallery-img"
+                        src="{{ image.image.url }}"
+                        alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                      />
+                    </div>
+                  </a>
+                </figure>
+                {% endif %} 
               {% endfor %}
             </div>
           </div>
+
+          <!-- Load More Button -->
+          {% if has_more %}
+          <div class="pozo-more-wrapper txt-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+            <a
+              href="#"
+              id="load-more-btn"
+              class="pozo-more-trigger flex"
+              data-page="2"
+              data-total="{{ total_count }}"
+              data-category="{{ active_category }}"
+            >
+              <span class="plus flex-center">&nbsp;</span>
+            </a>
+          </div>
+          {% endif %}
         </div>
       </div>
+      
       <!-- Footer -->
-      <footer>
-        <div class="container pozo-footer-container">
-          <div class="row">
-            <div class="col-md-8">
-              <ul class="pozo-social-icons">
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-facebook-f"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-instagram"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-behance"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <p class="pozo-copyright">
-                © 2025 <span>POZO</span> All right reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {% include 'components/footer.html' %}
     </div>
+    
     <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
@@ -197,7 +210,170 @@
     <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
-  </body>
+    <script src="{% static 'assets/js/locale.js' %}"></script>
+    <script id="gallery-script">
+      document.addEventListener("DOMContentLoaded", () => {
+        const loadMoreBtn = document.getElementById("load-more-btn");
+        const columns = Array.from(
+          document.querySelectorAll("#gallery-container .col-md-4.animate-box")
+        );
+        const filterBtns = document.querySelectorAll('.pozo-filter-btn');
 
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:21 GMT -->
+        if (!columns.length) {
+          console.log("Columns not found");
+          return;
+        }
+
+        // Gallery'deki mevcut resim sayısını hesapla
+        let globalImageCounter = document.querySelectorAll(".gallery-figure").length;
+        console.log(`Initial image count: ${globalImageCounter}`);
+
+        // Filter button click handlers
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Get category
+            const category = btn.dataset.category;
+            
+            // Navigate to filtered URL
+            const url = new URL(window.location);
+            if (category === 'all') {
+              url.searchParams.delete('category');
+            } else {
+              url.searchParams.set('category', category);
+            }
+            window.location.href = url.toString();
+          });
+        });
+
+        // Load more functionality
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const nextPage = parseInt(loadMoreBtn.dataset.page) || 2;
+            const category = loadMoreBtn.dataset.category || 'all';
+            console.log(`Loading page: ${nextPage}, category: ${category}`);
+
+            loadMoreBtn.style.opacity = "0.5";
+            loadMoreBtn.style.pointerEvents = "none";
+            
+            // Add loading class to gallery
+            document.getElementById('gallery-container').classList.add('gallery-loading');
+
+            const url = `/load-more-images/?page=${nextPage}&category=${category}`;
+
+            fetch(url, {
+              method: "GET",
+              headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "Content-Type": "application/json",
+              },
+            })
+              .then((res) => {
+                console.log(`Response status: ${res.status}`);
+                if (!res.ok) {
+                  throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+              })
+              .then((data) => {
+                console.log("Received data:", data);
+
+                if (data.error) {
+                  throw new Error(data.error);
+                }
+
+                if (!data.images || data.images.length === 0) {
+                  throw new Error("No images received");
+                }
+
+                data.images.forEach((imgObj, index) => {
+                  const figure = document.createElement("figure");
+                  figure.className = "gallery-figure";
+
+                  const link = document.createElement("a");
+                  link.className = "d-block mb-4";
+                  link.href = imgObj.image_url;
+                  link.setAttribute("data-fancybox", "images");
+                  link.dataset.caption = `${imgObj.category} - Gallery Image ${
+                    globalImageCounter + index + 1
+                  }`;
+
+                  const frameDiv = document.createElement("div");
+                  frameDiv.className = "gallery-frame";
+
+                  const img = document.createElement("img");
+                  img.className = "img-fluid gallery-img";
+                  img.src = imgObj.image_url;
+                  img.alt = `${imgObj.category} - Gallery Image ${globalImageCounter + index + 1}`;
+
+                  // Resim yükleme hatası kontrolü
+                  img.onerror = function () {
+                    console.error(`Failed to load image: ${imgObj.image_url}`);
+                    this.src = "/static/images/placeholder.jpg";
+                  };
+
+                  frameDiv.appendChild(img);
+                  link.appendChild(frameDiv);
+                  figure.appendChild(link);
+
+                  // Resmi uygun kolona ekle
+                  const columnIndex = (globalImageCounter + index) % 3;
+                  if (columns[columnIndex]) {
+                    columns[columnIndex].appendChild(figure);
+                  }
+                });
+
+                globalImageCounter += data.images.length;
+                console.log(`New image count: ${globalImageCounter}`);
+
+                // Fancybox'ı yeniden başlat
+                if (typeof jQuery !== "undefined" && jQuery.fancybox) {
+                  jQuery('[data-fancybox="images"]').fancybox({
+                    loop: true,
+                    buttons: ["zoom", "share", "slideShow", "fullScreen", "close"],
+                    animationEffect: "fade",
+                    transitionEffect: "slide",
+                  });
+                }
+
+                // Daha fazla sayfa var mı kontrol et
+                if (data.has_next && data.next_page) {
+                  loadMoreBtn.dataset.page = data.next_page;
+                  loadMoreBtn.style.opacity = "1";
+                  loadMoreBtn.style.pointerEvents = "auto";
+                } else {
+                  console.log("No more pages, removing button");
+                  loadMoreBtn.remove();
+                }
+              })
+              .catch((err) => {
+                console.error("Load-more error:", err);
+                loadMoreBtn.style.opacity = "1";
+                loadMoreBtn.style.pointerEvents = "auto";
+
+                let errorMessage = "Rəsimləri yükləyərkən xəta baş verdi.";
+                if (err.message.includes("404")) {
+                  errorMessage = "Daha fazla resim bulunamadı.";
+                } else if (err.message.includes("500")) {
+                  errorMessage = "Sunucu hatası oluştu.";
+                }
+
+                alert(errorMessage);
+              })
+              .finally(() => {
+                // Remove loading class
+                document.getElementById('gallery-container').classList.remove('gallery-loading');
+              });
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

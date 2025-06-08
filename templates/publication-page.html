@@ -1,6 +1,7 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="{{ LANGUAGE_CODE }}">
   <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/project-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:13:25 GMT -->
   <head>
     <meta charset="utf-8" />
@@ -76,77 +77,43 @@
         <div class="row">
           <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
             <img
+              style="padding: 0px 80px 10px"
               class="img-fluid"
-              src="{{ project.image.url }}"
-              alt="{{ project.title }}"
+              src="{{ publication.image.url }}"
+              alt="{{ publication.title }}"
             />
-            <h2 class="mt-40">{{ project.title }}</h2>
-            <p>{{ project.description|linebreaks }}</p>
+            <h2 class="mt-40">{{ publication.title }}</h2>
+            <p>{{ publication.description|linebreaks }}</p>
             <br />
           </div>
         </div>
       </div>
       <!-- Gallery -->
-      {% if project_images %}
+      {% if publication_images %}
       <div class="container">
         <div class="row mb-4">
-          {% for image in project_images %}
-          {% if forloop.counter0|divisibleby:2 %}
-          <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
-          {% endif %}
+          {% for image in publication_images %}
+          <div
+            class="col-md-6 animate-box fadeInUp animated"
+            data-animate-effect="fadeInUp"
+          >
             <figure>
               <a
                 class="d-block mb-4"
                 data-fancybox="images"
                 href="{{ image.image.url }}"
-                data-caption="{{ project.title }} - Image {{ forloop.counter }}"
+                data-caption="Quisque in felis"
               >
-                <img class="img-fluid" src="{{ image.image.url }}" alt="{{ project.title }}" />
+                <img class="img-fluid" src="{{ image.image.url }}" alt="" />
               </a>
             </figure>
-          {% if forloop.counter|divisibleby:2 or forloop.last %}
           </div>
-          {% endif %}
           {% endfor %}
         </div>
       </div>
       {% endif %}
       <!-- Footer -->
-      <footer>
-        <div class="container pozo-footer-container">
-          <div class="row">
-            <div class="col-md-8">
-              <ul class="pozo-social-icons">
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-facebook-f"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-instagram"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-behance"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <p class="pozo-copyright">
-                © 2025 <span>POZO</span> All right reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {% include 'components/footer.html' %}
     </div>
     <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
@@ -157,6 +124,7 @@
     <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'assets/js/locale.js' %}"></script>
   </body>
 
   <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/project-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:13:56 GMT -->

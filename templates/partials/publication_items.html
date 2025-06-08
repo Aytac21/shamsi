@@ -1,0 +1,28 @@
+{% load i18n %}
+{% for publication in publications %}
+<div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
+  <div class="item">
+    <div class="position-re o-hidden">
+      <img
+        src="{{ publication.image.url }}"
+        alt="{{ publication.title }}"
+      />
+    </div>
+    <div class="con">
+      <span class="category">
+        <a href="{% url 'publications:publication_detail' publication.pk %}"
+          >{{ forloop.counter|stringformat:"02d" }}</a
+        >
+      </span>
+      <h5>
+        <a href="{% url 'publications:publication_detail' publication.pk %}"
+          >{{ publication.title }}</a
+        >
+      </h5>
+      <a href="{% url 'publications:publication_detail' publication.pk %}"
+        ><i class="fa fa-long-arrow-right"></i
+      ></a>
+    </div>
+  </div>
+</div>
+{% endfor %}

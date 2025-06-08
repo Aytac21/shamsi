@@ -1,10 +1,20 @@
 {% load static %}
+
+<meta name="csrf-token" content="{{ csrf_token }}" />
+
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <!-- Logo -->
     <div class="logo-wrapper">
-      <a class="logo" href="index.html">
-        <img src="{% static 'logo.svg' %}" class="logo-img" alt="Rəssam Əli Şəmsi" />
+      <a
+        class="logo"
+        href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}"
+      >
+        <img
+          src="{% static 'logo.svg' %}"
+          class="logo-img"
+          alt="Rəssam Əli Şəmsi"
+        />
       </a>
       <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
     </div>
@@ -24,19 +34,69 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="/">Ana səhifə</a>
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}"
+            >Ana səhifə</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="/about/">Haqqında</a>
-        </li>
-           <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="/gallery/">Qalereya</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'project_list' %}active{% endif %}" href="/project/">Bloqlar</a>
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}about/"
+            >Haqqında</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="/contact/">Əlaqə</a>
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}gallery/"
+            >Qalereya</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'publication_list' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}publications/"
+            >Nəşrlər</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}contact/"
+            >Əlaqə</a
+          >
+        </li>
+        <li class="nav-item lang-btn">
+          <div class="language-selector" id="languageSelector">
+            <button class="current-lang" id="currentLang">
+              <span id="currentLangText">
+                {% if LANGUAGE_CODE == 'az' %}AZ{% elif LANGUAGE_CODE == 'ru'
+                %}RU{% else %}EN{% endif %}
+              </span>
+            </button>
+            <div class="dropdown" id="dropdown">
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
+                data-lang="az"
+              >
+                AZ
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+                data-lang="en"
+              >
+                EN
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
+                data-lang="ru"
+              >
+                RU
+              </button>
+            </div>
+          </div>
         </li>
       </ul>
     </div>

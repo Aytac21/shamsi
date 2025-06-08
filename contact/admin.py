@@ -22,5 +22,4 @@ class ContactAdmin(admin.ModelAdmin):
     )
 
     def has_add_permission(self, request):
-        # Admin panelinden manuel ekleme yapmayı engelle
         return False

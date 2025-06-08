@@ -1,6 +1,7 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="{{ LANGUAGE_CODE }}">
   <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:13 GMT -->
   <head>
     <meta charset="utf-8" />
@@ -70,14 +71,12 @@
         </div>
       </div>
       <!-- Navbar -->
-   {% include 'components/navbar.html' %}
+      {% include 'components/navbar.html' %}
       <!-- About Us -->
       <section class="about pt-130">
-        
         <div class="container">
-          <div class='about-title'><h1>{{ about.title }}</h1></div>
+          <div class="about-title"><h1>{{ about.title }}</h1></div>
           <div class="row">
-         
             <div
               class="col-md-6 image animate-box about-main-image"
               data-animate-effect="fadeInUp"
@@ -93,7 +92,6 @@
               <!-- About -->
               <div class="row">
                 <div class="col-md-12">
-               
                   <p>{{ about.description }}</p>
 
                   <p>
@@ -126,7 +124,9 @@
                     />
                   </div>
                   {% endif %}
-                  <div class="col-md-8">
+                  <div
+                    class="{% if aboutcontent.image %}col-md-8{% else %}col-md-12{% endif %}"
+                  >
                     <p class="text-justify">{{ aboutcontent.description }}</p>
                   </div>
                 </div>
@@ -145,41 +145,7 @@
         </div>
       </section>
       <!-- Footer -->
-      <footer>
-        <div class="container pozo-footer-container">
-          <div class="row">
-            <div class="col-md-8">
-              <ul class="pozo-social-icons">
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-facebook-f"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-instagram"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-behance"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <p class="pozo-copyright">
-                © 2025 <span>POZO</span> All right reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {% include 'components/footer.html' %}
     </div>
     <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
@@ -190,6 +156,7 @@
     <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'assets/js/locale.js' %}"></script>
   </body>
 
   <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:19 GMT -->
