@@ -86,6 +86,13 @@
             >Qalereya</a
           >
         </li>
+          <li class="nav-item">
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'video-gallery' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}videos/"
+            >Videolar</a
+          >
+        </li>
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'publication_list' %}active{% endif %}"
