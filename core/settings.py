@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "/staticfiles/"
 
 if DEBUG == False:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
