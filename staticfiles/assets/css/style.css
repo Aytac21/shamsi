@@ -821,6 +821,9 @@ a {
   .navbar button:hover {
     background: transparent;
   }
+  .language-selector.open #currentLangText {
+    color: #9c5451 !important;
+  }
   .navbar button:active,
   .navbar button:focus,
   .navbar button:hover {
@@ -3000,11 +3003,10 @@ ul.team-info-social li {
   .publication-main-image {
     padding: 0 0px !important;
   }
-  .mt-40{
+  .mt-40 {
     font-size: 25px !important;
-} 
-h4{
-line-height: 1.76rem !important;
-} 
+  }
+  h4 {
+    line-height: 1.76rem !important;
+  }
 }
-
