@@ -2901,3 +2901,13 @@ ul.team-info-social li {
 .pozo-filter-btn:hover::before {
   left: 100%;
 }
+
+.gallery-img-fluid {
+  width: 100%;
+height: 300px;
+object-fit: cover;
+object-position: center;
+}
+.gallery-block{
+  width: 100%;
+}

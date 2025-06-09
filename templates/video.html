@@ -1,7 +1,7 @@
-{% load static %}
+{% load static %} {% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/video.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:21 GMT -->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -51,6 +51,7 @@
         <img src="images/logo.png" class="logo" alt="" />
       </div>
     </div>
+    
     <!-- Progress scroll totop -->
     <div class="progress-wrap cursor-pointer">
       <svg
@@ -62,6 +63,7 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
       </svg>
     </div>
+    
     <div id="pozo-page-wrapper">
       <!-- Lines -->
       <div class="content-lines-wrapper">
@@ -69,8 +71,10 @@
           <div class="content-lines"></div>
         </div>
       </div>
+      
       <!-- Navbar -->
-     {% include 'components/navbar.html' %}
+      {% include 'components/navbar.html' %}
+      
       <!-- Gallery -->
       <div class="pozo-section pt-130">
         <div class="pozo-gallery">
@@ -80,100 +84,56 @@
                 class="section-head text-center col-md-12 animate-box"
                 data-animate-effect="fadeInUp"
               >
-                <h4>Video Gallery</h4>
+                <h4>{% trans 'Video Gallery' %}</h4>
               </div>
-              <!-- IMPORTANT: Some functionality (ajax, iframes, etc) will not work when you're opening local file directly on your browser, the code must be running on a web server. SOURCE: https://fancyapps.com/fancybox/3/docs/ -->
-              <div
-                class="col-md-6 mb-40 animate-box"
-                data-animate-effect="fadeInUp"
-              >
-                <a
-                  data-fancybox=""
-                  href="https://www.youtube.com/watch?v=ybso7mzV2hY"
+              
+              <!-- Video Gallery Grid -->
+              <div id="video-gallery-container" class="row">
+                {% for video in videos %}
+                <div
+                  class="col-md-6 mb-40 animate-box video-item"
+                  data-animate-effect="fadeInUp"
                 >
-                  <img class="img-fluid" src="images/gallery/08.jpg" alt="" />
-                  <p><span class="fa fa-play"></span></p>
-                </a>
-                <h5>Youtube Video (Popup)</h5>
+                  <a
+                    data-fancybox="video-gallery"
+                    href="{{ video.video }}"
+                    class="gallery-block"
+                  >
+                    {% if video.image %}
+                      <img class="img-fluid gallery-img-fluid" src="{{ video.image.url }}" alt="{{ video.title }}" />
+                    {% else %}
+                      <img class="img-fluid gallery-img-fluid" src="{% static 'images/gallery/default-video.jpg' %}" alt="{{ video.title }}" />
+                    {% endif %}
+                    <p><span class="fa fa-play"></span></p>
+                  </a>
+                  <h5>{{ video.title }}</h5>
+                </div>
+                {% endfor %}
               </div>
-              <div
-                class="col-md-6 mb-40 animate-box"
-                data-animate-effect="fadeInUp"
-              >
+              
+              <!-- Load More Button -->
+              {% if has_more %}
+              <div class="pozo-more-wrapper txt-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
                 <a
-                  data-fancybox=""
-                  data-ratio="2"
-                  href="https://vimeo.com/74295728"
+                  href="#"
+                  id="load-more-videos-btn"
+                  class="pozo-more-trigger flex"
+                  data-page="2"
+                  data-total="{{ total_count }}"
                 >
-                  <img class="img-fluid" src="images/gallery/20.jpg" alt="" />
-                  <p><span class="fa fa-play"></span></p>
+                  <span class="plus flex-center">&nbsp;</span>
                 </a>
-                <h5>Vimeo Video (Popup)</h5>
               </div>
-              <div
-                class="col-md-6 mb-40 d-none d-lg-block animate-box"
-                data-animate-effect="fadeInUp"
-              >
-                <a data-fancybox="bigbuckbunny" href="images/video.mp4">
-                  <img class="img-fluid" src="images/gallery/15.jpg" alt="" />
-                  <p><span class="fa fa-play"></span></p>
-                </a>
-                <h5>Custom Video (Popup)</h5>
-              </div>
-              <div
-                class="col-md-6 mb-40 animate-box"
-                data-animate-effect="fadeInUp"
-              >
-                <a
-                  data-fancybox=""
-                  href="https://www.youtube.com/watch?v=cnM7NpF0tdQ"
-                >
-                  <img class="img-fluid" src="images/gallery/13.jpg" alt="" />
-                  <p><span class="fa fa-play"></span></p>
-                </a>
-                <h5>Youtube Video (Popup)</h5>
-              </div>
+              {% endif %}
             </div>
           </div>
         </div>
       </div>
+      
       <!-- Footer -->
-      <footer>
-        <div class="container pozo-footer-container">
-          <div class="row">
-            <div class="col-md-8">
-              <ul class="pozo-social-icons">
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-facebook-f"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-instagram"></span>
-                  </a>
-                </li>
-                <li class="pozo-social-icons-item">
-                  <a class="pozo-social-link" href="index.html#">
-                    <span class="pozo-social-icon fa fa-behance"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <p class="pozo-copyright">
-                © 2025 <span>POZO</span> All right reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {% include 'components/footer.html' %}
     </div>
+    
     <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
@@ -183,7 +143,90 @@
     <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
+    
+    <!-- Video Gallery Load More Script -->
+    <script>
+    $(document).ready(function() {
+        $('#load-more-videos-btn').on('click', function(e) {
+            e.preventDefault();
+            
+            const btn = $(this);
+            const currentPage = btn.data('page');
+            const totalCount = btn.data('total');
+            
+            // Show loading state
+            btn.addClass('loading');
+            btn.find('.plus').html('<i class="fa fa-spinner fa-spin"></i>');
+            
+            $.ajax({
+                url: '/ajax/load-more-videos/',
+                type: 'GET',
+                data: {
+                    'page': currentPage
+                },
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                success: function(response) {
+                    if (response.videos && response.videos.length > 0) {
+                        let videosHtml = '';
+                        
+                        response.videos.forEach(function(video) {
+                            const imageUrl = video.image_url || '{% static "images/gallery/default-video.jpg" %}';
+                            
+                            videosHtml += `
+                                <div class="col-md-6 mb-40 animate-box video-item" data-animate-effect="fadeInUp">
+                                    <a class="gallery-block" data-fancybox="video-gallery" href="${video.video}">
+                                        <img class="img-fluid gallery-img-fluid" src="${imageUrl}" alt="${video.title}" />
+                                        <p><span class="fa fa-play"></span></p>
+                                    </a>
+                                    <h5>${video.title}</h5>
+                                </div>
+                            `;
+                        });
+                        
+                        // Append new videos
+                        $('#video-gallery-container').append(videosHtml);
+                        
+                        // Update button state
+                        if (response.has_next) {
+                            btn.data('page', response.next_page);
+                        } else {
+                            btn.parent().hide();
+                        }
+                        
+                        // Reinitialize animations for new items
+                        $('.video-item:not(.animated)').each(function() {
+                            $(this).addClass('animated fadeInUp');
+                        });
+                        
+                        // Reinitialize Fancybox for new items
+                        $('[data-fancybox="video-gallery"]').fancybox({
+                            buttons: ["zoom", "share", "slideShow", "fullScreen", "download", "thumbs", "close"],
+                            loop: false,
+                            protect: true
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error loading more videos:', error);
+                    alert('Videolar yüklenirken bir hata oluştu.');
+                },
+                complete: function() {
+                    // Reset button state
+                    btn.removeClass('loading');
+                    btn.find('.plus').html('&nbsp;');
+                }
+            });
+        });
+        
+        // Initialize Fancybox for existing videos
+        $('[data-fancybox="video-gallery"]').fancybox({
+            buttons: ["zoom", "share", "slideShow", "fullScreen", "download", "thumbs", "close"],
+            loop: false,
+            protect: true
+        });
+    });
+    </script>
   </body>
-
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/video.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:12:46 GMT -->
 </html>
