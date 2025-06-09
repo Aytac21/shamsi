@@ -19,6 +19,36 @@
       <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
     </div>
     <!-- Button -->
+    <div class="navbar-right-side"><li class="nav-item lang-btn-mobile">
+          <div class="language-selector" id="languageSelector">
+            <button class="current-lang" id="currentLang">
+              <span id="currentLangText">
+                {% if LANGUAGE_CODE == 'az' %}AZ{% elif LANGUAGE_CODE == 'ru'
+                %}RU{% else %}EN{% endif %}
+              </span>
+            </button>
+            <div class="dropdown" id="dropdown">
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
+                data-lang="az"
+              >
+                AZ
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+                data-lang="en"
+              >
+                EN
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
+                data-lang="ru"
+              >
+                RU
+              </button>
+            </div>
+          </div>
+        </li>
     <button
       class="navbar-toggler"
       type="button"
@@ -29,7 +59,9 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
-    </button>
+      
+    </button></div>
+   
     <!-- Menu -->
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ms-auto">
@@ -69,28 +101,28 @@
           >
         </li>
         <li class="nav-item lang-btn">
-          <div class="language-selector" id="languageSelector">
-            <button class="current-lang" id="currentLang">
-              <span id="currentLangText">
+          <div class="language-selector" id="languageSelector1">
+            <button class="current-lang" id="currentLang1">
+              <span id="currentLangText1">
                 {% if LANGUAGE_CODE == 'az' %}AZ{% elif LANGUAGE_CODE == 'ru'
                 %}RU{% else %}EN{% endif %}
               </span>
             </button>
-            <div class="dropdown" id="dropdown">
+            <div class="dropdown" id="dropdown1">
               <button
-                class="lang-option {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
+                class="lang-option1 {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
                 data-lang="az"
               >
                 AZ
               </button>
               <button
-                class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+                class="lang-option1 {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
                 data-lang="en"
               >
                 EN
               </button>
               <button
-                class="lang-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
+                class="lang-option1 {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
                 data-lang="ru"
               >
                 RU

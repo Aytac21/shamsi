@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="1308.61 7410.93 18368.52 14879.2">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="210mm" height="297mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 21000 29700"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
  <defs>
   <style type="text/css">
    <![CDATA[
@@ -213,9 +219,9 @@
    <path class="fil6" d="M16665.91 8315.79c11.17,0 20.22,5.95 20.22,13.3 0,7.35 -9.05,13.31 -20.22,13.31 -11.18,0 -20.23,-5.96 -20.23,-13.31 0,-7.35 9.05,-13.3 20.23,-13.3z"/>
    <path class="fil7" d="M14261.27 19266.69c-5.78,4.36 -4.79,6.21 -4.04,7.38 0.75,1.18 1.26,1.69 1.86,2.37 0.6,0.69 1.28,1.54 2.28,2.5 1.01,0.97 2.34,2.03 3.79,3.38 1.46,1.35 3.03,2.97 4.45,4.09 1.41,1.11 2.65,1.71 4.31,2.54 1.67,0.83 3.77,1.91 5.57,2.61 1.79,0.71 3.29,1.05 5,1.33 1.71,0.27 3.63,0.49 5.09,0.55 1.45,0.06 2.44,-0.02 4.32,-0.34 1.88,-0.32 4.65,-0.88 31.45,-10.57 26.79,-9.68 77.59,-28.5 106.01,-39.19 28.41,-10.69 34.45,-13.26 36.33,-20.25 1.88,-6.99 -0.39,-18.41 -4.51,-29.42 -4.13,-11.01 -10.12,-21.62 -15.47,-29.02 -5.34,-7.4 -10.04,-11.59 -16.33,-13.79 -6.29,-2.2 -14.15,-2.42 -26.25,3.05 -12.11,5.48 -28.45,16.64 -47.99,33.36 -19.54,16.73 -42.29,39.01 -59.93,53.59 -17.64,14.58 -30.17,21.47 -35.94,25.83z"/>
    <path class="fil7" d="M13936.69 19095.71c65.27,-32.17 188.37,-109.16 336.02,-211.99 147.64,-102.83 319.83,-231.51 426.01,-316.3 106.18,-84.8 146.35,-125.71 171.82,-158.07 25.48,-32.35 36.26,-56.15 8.19,-74.38 -28.09,-18.22 -95.03,-30.87 -249.37,50.39 -154.34,81.27 -396.08,256.44 -539.45,391.62 -143.37,135.19 -188.36,230.4 -207.14,284.33 -18.79,53.92 -11.35,66.57 53.92,34.4z"/>
-   <line class="fil4 str1" x1="14221.27" y1="18942.53" x2="14954.3" y2="18361.22"/>
-   <line class="fil4 str1" x1="14208.69" y1="18942.53" x2="14941.72" y2="18361.22"/>
-   <line class="fil4 str1" x1="14214.98" y1="18961.39" x2="14948.01" y2="18380.08"/>
+   <line class="fil4 str1" x1="14221.27" y1="18942.53" x2="14954.3" y2= "18361.22" />
+   <line class="fil4 str1" x1="14208.69" y1="18942.53" x2="14941.72" y2= "18361.22" />
+   <line class="fil4 str1" x1="14214.98" y1="18961.39" x2="14948.01" y2= "18380.08" />
   </g>
  </g>
 </svg>

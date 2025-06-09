@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content=" width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
-    <title>P O Z O</title>
+    <title>Ali Shamsi</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
       rel="stylesheet"
@@ -98,7 +98,12 @@
                     data-animate-effect="fadeInLeft"
                     data-swiper-parallax-y="70%"
                   >
-                    <a href="{{ header.url }}" target="_blank">
+                    <a
+                      {%if header.url%}
+                      href="{{ header.url }}"
+                      {%endif%}
+                      target="_blank"
+                    >
                       <img
                         src="{{ header.image.url }}"
                         alt="{{ header.title }}"
@@ -291,7 +296,7 @@
           } else if (currentPath.startsWith("/ru/") || currentPath === "/ru") {
             return "ru";
           }
-          return "en"; 
+          return "en";
         }
 
         const savedLang =
@@ -304,7 +309,7 @@
         } else if (savedLang === "ru") {
           galleryUrl = "/ru/gallery";
         } else {
-          galleryUrl = "/gallery"; 
+          galleryUrl = "/gallery";
         }
 
         console.log("Navigating to gallery:", galleryUrl);

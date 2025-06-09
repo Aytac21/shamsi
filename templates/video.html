@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content=" width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
-    <title>P O Z O</title>
+    <title>Ali Shamsi</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
       rel="stylesheet"
@@ -51,7 +51,7 @@
         <img src="images/logo.png" class="logo" alt="" />
       </div>
     </div>
-    
+
     <!-- Progress scroll totop -->
     <div class="progress-wrap cursor-pointer">
       <svg
@@ -63,7 +63,7 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
       </svg>
     </div>
-    
+
     <div id="pozo-page-wrapper">
       <!-- Lines -->
       <div class="content-lines-wrapper">
@@ -71,10 +71,10 @@
           <div class="content-lines"></div>
         </div>
       </div>
-      
+
       <!-- Navbar -->
       {% include 'components/navbar.html' %}
-      
+
       <!-- Gallery -->
       <div class="pozo-section pt-130">
         <div class="pozo-gallery">
@@ -86,7 +86,7 @@
               >
                 <h4>{% trans 'Video Gallery' %}</h4>
               </div>
-              
+
               <!-- Video Gallery Grid -->
               <div id="video-gallery-container" class="row">
                 {% for video in videos %}
@@ -100,9 +100,17 @@
                     class="gallery-block"
                   >
                     {% if video.image %}
-                      <img class="img-fluid gallery-img-fluid" src="{{ video.image.url }}" alt="{{ video.title }}" />
+                    <img
+                      class="img-fluid gallery-img-fluid"
+                      src="{{ video.image.url }}"
+                      alt="{{ video.title }}"
+                    />
                     {% else %}
-                      <img class="img-fluid gallery-img-fluid" src="{% static 'images/gallery/default-video.jpg' %}" alt="{{ video.title }}" />
+                    <img
+                      class="img-fluid gallery-img-fluid"
+                      src="{% static 'images/gallery/default-video.jpg' %}"
+                      alt="{{ video.title }}"
+                    />
                     {% endif %}
                     <p><span class="fa fa-play"></span></p>
                   </a>
@@ -110,10 +118,13 @@
                 </div>
                 {% endfor %}
               </div>
-              
+
               <!-- Load More Button -->
               {% if has_more %}
-              <div class="pozo-more-wrapper txt-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+              <div
+                class="pozo-more-wrapper txt-center animate-box fadeInUp animated"
+                data-animate-effect="fadeInUp"
+              >
                 <a
                   href="#"
                   id="load-more-videos-btn"
@@ -129,11 +140,11 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Footer -->
       {% include 'components/footer.html' %}
     </div>
-    
+
     <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
@@ -143,38 +154,40 @@
     <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
-    
+
     <!-- Video Gallery Load More Script -->
     <script>
-    $(document).ready(function() {
-        $('#load-more-videos-btn').on('click', function(e) {
-            e.preventDefault();
-            
-            const btn = $(this);
-            const currentPage = btn.data('page');
-            const totalCount = btn.data('total');
-            
-            // Show loading state
-            btn.addClass('loading');
-            btn.find('.plus').html('<i class="fa fa-spinner fa-spin"></i>');
-            
-            $.ajax({
-                url: '/ajax/load-more-videos/',
-                type: 'GET',
-                data: {
-                    'page': currentPage
-                },
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                success: function(response) {
-                    if (response.videos && response.videos.length > 0) {
-                        let videosHtml = '';
-                        
-                        response.videos.forEach(function(video) {
-                            const imageUrl = video.image_url || '{% static "images/gallery/default-video.jpg" %}';
-                            
-                            videosHtml += `
+      $(document).ready(function () {
+        $("#load-more-videos-btn").on("click", function (e) {
+          e.preventDefault();
+
+          const btn = $(this);
+          const currentPage = btn.data("page");
+          const totalCount = btn.data("total");
+
+          // Show loading state
+          btn.addClass("loading");
+          btn.find(".plus").html('<i class="fa fa-spinner fa-spin"></i>');
+
+          $.ajax({
+            url: "/ajax/load-more-videos/",
+            type: "GET",
+            data: {
+              page: currentPage,
+            },
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            success: function (response) {
+              if (response.videos && response.videos.length > 0) {
+                let videosHtml = "";
+
+                response.videos.forEach(function (video) {
+                  const imageUrl =
+                    video.image_url ||
+                    '{% static "images/gallery/default-video.jpg" %}';
+
+                  videosHtml += `
                                 <div class="col-md-6 mb-40 animate-box video-item" data-animate-effect="fadeInUp">
                                     <a class="gallery-block" data-fancybox="video-gallery" href="${video.video}">
                                         <img class="img-fluid gallery-img-fluid" src="${imageUrl}" alt="${video.title}" />
@@ -183,50 +196,66 @@
                                     <h5>${video.title}</h5>
                                 </div>
                             `;
-                        });
-                        
-                        // Append new videos
-                        $('#video-gallery-container').append(videosHtml);
-                        
-                        // Update button state
-                        if (response.has_next) {
-                            btn.data('page', response.next_page);
-                        } else {
-                            btn.parent().hide();
-                        }
-                        
-                        // Reinitialize animations for new items
-                        $('.video-item:not(.animated)').each(function() {
-                            $(this).addClass('animated fadeInUp');
-                        });
-                        
-                        // Reinitialize Fancybox for new items
-                        $('[data-fancybox="video-gallery"]').fancybox({
-                            buttons: ["zoom", "share", "slideShow", "fullScreen", "download", "thumbs", "close"],
-                            loop: false,
-                            protect: true
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error loading more videos:', error);
-                    alert('Videolar yüklenirken bir hata oluştu.');
-                },
-                complete: function() {
-                    // Reset button state
-                    btn.removeClass('loading');
-                    btn.find('.plus').html('&nbsp;');
+                });
+
+                // Append new videos
+                $("#video-gallery-container").append(videosHtml);
+
+                // Update button state
+                if (response.has_next) {
+                  btn.data("page", response.next_page);
+                } else {
+                  btn.parent().hide();
                 }
-            });
+
+                // Reinitialize animations for new items
+                $(".video-item:not(.animated)").each(function () {
+                  $(this).addClass("animated fadeInUp");
+                });
+
+                // Reinitialize Fancybox for new items
+                $('[data-fancybox="video-gallery"]').fancybox({
+                  buttons: [
+                    "zoom",
+                    "share",
+                    "slideShow",
+                    "fullScreen",
+                    "download",
+                    "thumbs",
+                    "close",
+                  ],
+                  loop: false,
+                  protect: true,
+                });
+              }
+            },
+            error: function (xhr, status, error) {
+              console.error("Error loading more videos:", error);
+              alert("Videolar yüklenirken bir hata oluştu.");
+            },
+            complete: function () {
+              // Reset button state
+              btn.removeClass("loading");
+              btn.find(".plus").html("&nbsp;");
+            },
+          });
         });
-        
+
         // Initialize Fancybox for existing videos
         $('[data-fancybox="video-gallery"]').fancybox({
-            buttons: ["zoom", "share", "slideShow", "fullScreen", "download", "thumbs", "close"],
-            loop: false,
-            protect: true
+          buttons: [
+            "zoom",
+            "share",
+            "slideShow",
+            "fullScreen",
+            "download",
+            "thumbs",
+            "close",
+          ],
+          loop: false,
+          protect: true,
         });
-    });
+      });
     </script>
   </body>
 </html>

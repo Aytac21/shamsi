@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content=" width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
-    <title>P O Z O - Gallery</title>
+    <title>Ali Shamsi - Gallery</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
       rel="stylesheet"
@@ -50,7 +50,7 @@
         <img src="images/logo.png" class="logo" alt="" />
       </div>
     </div>
-    
+
     <!-- Progress scroll totop -->
     <div class="progress-wrap cursor-pointer">
       <svg
@@ -62,7 +62,7 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
       </svg>
     </div>
-    
+
     <div id="pozo-page-wrapper">
       <!-- Lines -->
       <div class="content-lines-wrapper">
@@ -70,118 +70,128 @@
           <div class="content-lines"></div>
         </div>
       </div>
-      
+
       <!-- Navbar -->
       {% include 'components/navbar.html' %}
-      
+
       <!-- Gallery -->
       <div class="pozo-section pt-130">
         <div class="container">
           <!-- Section Header -->
           <div class="row mb-4">
-            <div class="section-head text-center col-md-12 animate-box" data-animate-effect="fadeInUp">
+            <div
+              class="section-head text-center col-md-12 animate-box"
+              data-animate-effect="fadeInUp"
+            >
               <h4>Rəsmlər</h4>
             </div>
           </div>
-          
+
           <!-- Category Filters -->
           <div class="row mb-4">
             <div class="col-12">
-              <div class="pozo-gallery-filters animate-box" data-animate-effect="fadeInUp">
-                <a href="?category=all" 
-                   class="pozo-filter-btn {% if active_category == 'all' %}active{% endif %}" 
-                   data-category="all">
+              <div
+                class="pozo-gallery-filters animate-box"
+                data-animate-effect="fadeInUp"
+              >
+                <a
+                  href="?category=all"
+                  class="pozo-filter-btn {% if active_category == 'all' %}active{% endif %}"
+                  data-category="all"
+                >
                   Hamısı
                 </a>
                 {% for category in categories %}
-                <a href="?category={{ category.slug }}" 
-                   class="pozo-filter-btn {% if active_category == category.slug %}active{% endif %}" 
-                   data-category="{{ category.slug }}">
+                <a
+                  href="?category={{ category.slug }}"
+                  class="pozo-filter-btn {% if active_category == category.slug %}active{% endif %}"
+                  data-category="{{ category.slug }}"
+                >
                   {{ category.name }}
                 </a>
                 {% endfor %}
               </div>
             </div>
           </div>
-          
+
           <!-- Gallery Grid -->
           <div class="row mb-4" id="gallery-container">
             <!-- First Column: Index 0,3,6,9 (mod 3 = 0) -->
             <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              {% for image in images %} 
-                {% if forloop.counter0|divisibleby:3 %}
-                <figure class="gallery-figure">
-                  <a
-                    class="d-block mb-4"
-                    data-fancybox="images"
-                    href="{{ image.image.url }}"
-                    data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                  >
-                    <div class="gallery-frame">
-                      <img
-                        class="img-fluid gallery-img"
-                        src="{{ image.image.url }}"
-                        alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                      />
-                    </div>
-                  </a>
-                </figure>
-                {% endif %} 
-              {% endfor %}
+              {% for image in images %} {% if forloop.counter0|divisibleby:3 %}
+              <figure class="gallery-figure">
+                <a
+                  class="d-block mb-4"
+                  data-fancybox="images"
+                  href="{{ image.image.url }}"
+                  data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                >
+                  <div class="gallery-frame">
+                    <img
+                      class="img-fluid gallery-img"
+                      src="{{ image.image.url }}"
+                      alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                    />
+                  </div>
+                </a>
+              </figure>
+              {% endif %} {% endfor %}
             </div>
 
             <!-- Second Column: Index 1,4,7,10 (mod 3 = 1) -->
             <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              {% for image in images %} 
-                {% if forloop.counter0|add:"2"|divisibleby:3 %}
-                <figure class="gallery-figure">
-                  <a
-                    class="d-block mb-4"
-                    data-fancybox="images"
-                    href="{{ image.image.url }}"
-                    data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                  >
-                    <div class="gallery-frame">
-                      <img
-                        class="img-fluid gallery-img"
-                        src="{{ image.image.url }}"
-                        alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                      />
-                    </div>
-                  </a>
-                </figure>
-                {% endif %} 
-              {% endfor %}
+              {% for image in images %} {% if forloop.counter0|add:"2"|divisibleby:3 %}
+              <figure class="gallery-figure">
+                <a
+                  class="d-block mb-4"
+                  data-fancybox="images"
+                  href="{{ image.image.url }}"
+                  data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                >
+                  <div class="gallery-frame">
+                    <img
+                      class="img-fluid gallery-img"
+                      src="{{ image.image.url }}"
+                      alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                    />
+                  </div>
+                </a>
+              </figure>
+              {% endif %} {% endfor %}
             </div>
 
             <!-- Third Column: Index 2,5,8 (mod 3 = 2) -->
-            <div class="col-md-4 d-none d-lg-block animate-box" data-animate-effect="fadeInUp">
-              {% for image in images %} 
-                {% if forloop.counter0|add:"1"|divisibleby:3 %}
-                <figure class="gallery-figure">
-                  <a
-                    class="d-block mb-4"
-                    data-fancybox="images"
-                    href="{{ image.image.url }}"
-                    data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                  >
-                    <div class="gallery-frame">
-                      <img
-                        class="img-fluid gallery-img"
-                        src="{{ image.image.url }}"
-                        alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                      />
-                    </div>
-                  </a>
-                </figure>
-                {% endif %} 
-              {% endfor %}
+            <div
+              class="col-md-4 d-none d-lg-block animate-box"
+              data-animate-effect="fadeInUp"
+            >
+              {% for image in images %} {% if forloop.counter0|add:"1"|divisibleby:3 %}
+              <figure class="gallery-figure">
+                <a
+                  class="d-block mb-4"
+                  data-fancybox="images"
+                  href="{{ image.image.url }}"
+                  data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                >
+                  <div class="gallery-frame">
+                    <img
+                      class="img-fluid gallery-img"
+                      src="{{ image.image.url }}"
+                      alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                    />
+                  </div>
+                </a>
+              </figure>
+              {% endif %} {% endfor %}
             </div>
           </div>
 
           <!-- Load More Button -->
           {% if has_more %}
-          <div class="pozo-more-wrapper txt-center animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+          <div
+            class="pozo-more-wrapper txt-center animate-box fadeInUp animated"
+            data-animate-effect="fadeInUp"
+          >
             <a
               href="#"
               id="load-more-btn"
@@ -196,11 +206,11 @@
           {% endif %}
         </div>
       </div>
-      
+
       <!-- Footer -->
       {% include 'components/footer.html' %}
     </div>
-    
+
     <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
@@ -217,7 +227,7 @@
         const columns = Array.from(
           document.querySelectorAll("#gallery-container .col-md-4.animate-box")
         );
-        const filterBtns = document.querySelectorAll('.pozo-filter-btn');
+        const filterBtns = document.querySelectorAll(".pozo-filter-btn");
 
         if (!columns.length) {
           console.log("Columns not found");
@@ -225,27 +235,28 @@
         }
 
         // Gallery'deki mevcut resim sayısını hesapla
-        let globalImageCounter = document.querySelectorAll(".gallery-figure").length;
+        let globalImageCounter =
+          document.querySelectorAll(".gallery-figure").length;
         console.log(`Initial image count: ${globalImageCounter}`);
 
         // Filter button click handlers
-        filterBtns.forEach(btn => {
-          btn.addEventListener('click', (e) => {
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
             e.preventDefault();
-            
+
             // Update active state
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
             // Get category
             const category = btn.dataset.category;
-            
+
             // Navigate to filtered URL
             const url = new URL(window.location);
-            if (category === 'all') {
-              url.searchParams.delete('category');
+            if (category === "all") {
+              url.searchParams.delete("category");
             } else {
-              url.searchParams.set('category', category);
+              url.searchParams.set("category", category);
             }
             window.location.href = url.toString();
           });
@@ -257,14 +268,16 @@
             e.preventDefault();
 
             const nextPage = parseInt(loadMoreBtn.dataset.page) || 2;
-            const category = loadMoreBtn.dataset.category || 'all';
+            const category = loadMoreBtn.dataset.category || "all";
             console.log(`Loading page: ${nextPage}, category: ${category}`);
 
             loadMoreBtn.style.opacity = "0.5";
             loadMoreBtn.style.pointerEvents = "none";
-            
+
             // Add loading class to gallery
-            document.getElementById('gallery-container').classList.add('gallery-loading');
+            document
+              .getElementById("gallery-container")
+              .classList.add("gallery-loading");
 
             const url = `/load-more-images/?page=${nextPage}&category=${category}`;
 
@@ -311,7 +324,9 @@
                   const img = document.createElement("img");
                   img.className = "img-fluid gallery-img";
                   img.src = imgObj.image_url;
-                  img.alt = `${imgObj.category} - Gallery Image ${globalImageCounter + index + 1}`;
+                  img.alt = `${imgObj.category} - Gallery Image ${
+                    globalImageCounter + index + 1
+                  }`;
 
                   // Resim yükleme hatası kontrolü
                   img.onerror = function () {
@@ -337,7 +352,13 @@
                 if (typeof jQuery !== "undefined" && jQuery.fancybox) {
                   jQuery('[data-fancybox="images"]').fancybox({
                     loop: true,
-                    buttons: ["zoom", "share", "slideShow", "fullScreen", "close"],
+                    buttons: [
+                      "zoom",
+                      "share",
+                      "slideShow",
+                      "fullScreen",
+                      "close",
+                    ],
                     animationEffect: "fade",
                     transitionEffect: "slide",
                   });
@@ -369,7 +390,9 @@
               })
               .finally(() => {
                 // Remove loading class
-                document.getElementById('gallery-container').classList.remove('gallery-loading');
+                document
+                  .getElementById("gallery-container")
+                  .classList.remove("gallery-loading");
               });
           });
         }

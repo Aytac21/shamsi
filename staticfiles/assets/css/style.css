@@ -752,7 +752,34 @@ a {
     transform: translateY(0);
   }
 }
+.lang-btn-mobile {
+  display: none !important;
+}
 @media screen and (max-width: 991px) {
+  .lang-option {
+    margin-top: 0px !important;
+  }
+
+  .lang-option.active {
+    color: #9c5451 !important;
+  }
+
+  .lang-btn-mobile .current-lang {
+    margin-top: 0px !important;
+  }
+
+  .navbar-right-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lang-btn {
+    display: none !important;
+  }
+  .lang-btn-mobile {
+    display: flex !important;
+  }
   .navbar {
     padding-left: 0px;
     padding-right: 0px;
@@ -772,17 +799,16 @@ a {
     background-color: transparent;
   }
   .nav-scroll .logo-img {
-    width: 115px;
+    width: 75px;
   }
   .navbar .logo {
     text-align: left;
     margin-left: 0px;
   }
-  .nav-scroll .logo {
-  }
+
   .logo-img {
     margin-bottom: 0px;
-    width: 115px;
+    width: 75px;
     padding: 0;
   }
   .navbar button {
@@ -2340,6 +2366,9 @@ ul.team-info-social li {
   .pozo-form-block-child li > .pozo-form-wrapper {
     width: 75%;
   }
+  .logo-wrapper img {
+    width: 65px;
+  }
 }
 @media (max-width: 700px) {
   .pozo-form-wrapper {
@@ -2451,6 +2480,16 @@ ul.team-info-social li {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px !important;
+  }
+}
+
+@media (max-width: 990px) {
+  .home-page .swiper-container {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .home-page .swiper-slide img {
+    width: 80% !important;
   }
 }
 
@@ -2697,6 +2736,20 @@ ul.team-info-social li {
   transition: background-color 0.2s ease;
 }
 
+.lang-option1 {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: #222;
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
 .lang-option:hover {
   background: #191919;
   color: #9c5451;
@@ -2712,6 +2765,24 @@ ul.team-info-social li {
 }
 
 .lang-option:not(:last-child) {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.lang-option1:hover {
+  background: #191919;
+  color: #9c5451;
+}
+
+.lang-option1.active {
+  background: #191919;
+  color: #999;
+}
+
+.lang-option1.active:hover {
+  background: #191919;
+}
+
+.lang-option1:not(:last-child) {
   border-bottom: 1px solid #e9ecef;
 }
 
@@ -2871,14 +2942,14 @@ ul.team-info-social li {
 
 .pozo-filter-btn:hover {
   color: #fff;
-    border-color: #9c5451;
-      background-color: rgba(255, 255, 255, 0.05);
+  border-color: #9c5451;
+  background-color: rgba(255, 255, 255, 0.05);
   text-decoration: none;
 }
 
 .pozo-filter-btn.active {
   color: #fff;
-    background: #9c5451;
+  background: #9c5451;
   border-color: #9c5451;
 }
 
@@ -2904,10 +2975,36 @@ ul.team-info-social li {
 
 .gallery-img-fluid {
   width: 100%;
-height: 300px;
-object-fit: cover;
-object-position: center;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
 }
-.gallery-block{
+.gallery-block {
   width: 100%;
 }
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right,
+.swiper-slide-shadow-top,
+.swiper-slide-shadow-bottom,
+.swiper-slide-shadow-coverflow {
+  background: transparent !important;
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 0 0px;
+  }
+}
+
+@media (max-width: 880px) {
+  .publication-main-image {
+    padding: 0 0px !important;
+  }
+  .mt-40{
+    font-size: 25px !important;
+} 
+h4{
+line-height: 1.76rem !important;
+} 
+}
+

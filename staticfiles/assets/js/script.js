@@ -105,31 +105,32 @@
 
   /* Swiper slider */
   if (window.innerWidth < 1200) {
-    new Swiper(".swiper-container", {
-      direction: "horizontal",
-      slidesPerView: 1,
-      nextButton: ".swiper-button-next",
-      prevButton: ".swiper-button-prev",
-      paginationClickable: !0,
-      spaceBetween: 0,
-      autoplay: false,
-      loop: !0,
-    });
-  } else {
-    new Swiper(".swiper-container", {
-      direction: "horizontal",
-      slidesPerView: 1,
-      parallax: !0,
-      nextButton: ".swiper-button-next",
-      prevButton: ".swiper-button-prev",
-      paginationClickable: !0,
-      spaceBetween: 0,
-      speed: 5000,
-      parallax: !0,
-      autoplay: false,
-      loop: !0,
-    });
-  }
+    // new Swiper(".swiper-container", {
+    //   direction: "horizontal",
+    //   slidesPerView: 1,
+    //   nextButton: ".swiper-button-next",
+    //   prevButton: ".swiper-button-prev",
+    //   paginationClickable: !0,
+    //   spaceBetween: 0,
+    //   autoplay: false,
+    //   loop: !0,
+    // });
+  } 
+  // else {
+  //   new Swiper(".swiper-container", {
+  //     direction: "horizontal",
+  //     slidesPerView: 1,
+  //     parallax: !0,
+  //     nextButton: ".swiper-button-next",
+  //     prevButton: ".swiper-button-prev",
+  //     paginationClickable: !0,
+  //     spaceBetween: 0,
+  //     speed: 5000,
+  //     parallax: !0,
+  //     autoplay: false,
+  //     loop: !0,
+  //   });
+  // }
 
   // Sections background image from data background
   var pageSection = $(".bg-img, section");
@@ -188,7 +189,7 @@
   const form = document.querySelector("form");
   const successAlert = document.querySelector(".alert-success.contact__msg");
 
-  form.addEventListener("submit", function (e) {
+  if(form)form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const formData = new FormData(form);
