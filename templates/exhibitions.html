@@ -1,7 +1,6 @@
 {% load static %} {% load i18n %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/project.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:14:00 GMT -->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,13 +44,11 @@
   </head>
 
   <body>
-    <!-- Page Preloader -->
     <div id="Lfa-page-loading" class="pozo-pageloading">
       <div class="pozo-pageloading-inner">
         <img loading="lazy" src="images/logo.png" class="logo" alt="" />
       </div>
     </div>
-    <!-- Progress scroll totop -->
     <div class="progress-wrap cursor-pointer">
       <svg
         class="progress-circle svg-content"
@@ -63,60 +60,52 @@
       </svg>
     </div>
     <div id="pozo-page-wrapper">
-      <!-- Lines -->
       <div class="content-lines-wrapper">
         <div class="content-lines-inner">
           <div class="content-lines"></div>
         </div>
       </div>
-      <!-- Navbar -->
       {% include 'components/navbar.html' %}
-      <!-- Projects -->
-      <section class="projects pt-130 mb-60">
+      <section class="services pt-130">
         <div class="container">
           <div class="row">
             <div
               class="section-head col-md-12 text-center animate-box"
               data-animate-effect="fadeInUp"
             >
-              <h4>{% trans 'Nəşrlər' %}</h4>
+              <h4>{% trans 'Our Exhibitions' %}</h4>
             </div>
-
-            {% for publication in publications %}
-            <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              <div class="item">
-                <div class="position-re o-hidden">
-                  <img
-                    loading="lazy"
-                    src="{{ publication.image.url }}"
-                    alt="{{ publication.title }}"
-                  />
-                </div>
-                <div class="con">
-                  <span class="category">
-                    <a
-                      href="{% url 'publications:publication_detail' publication.pk %}"
-                      >{{ forloop.counter|stringformat:"02d" }}</a
-                    >
-                  </span>
-                  <h5>
-                    <a
-                      href="{% url 'publications:publication_detail' publication.pk %}"
-                      >{{ publication.title }}</a
-                    >
-                  </h5>
-                  <a
-                    href="{% url 'publications:publication_detail' publication.pk %}"
-                    ><i class="fa fa-long-arrow-right"></i
-                  ></a>
-                </div>
+            <div id="exhibition-items-container" class="row">
+              {% for exhibition in exhibitions %}
+              <div
+                class="col-md-4 mb-40 animate-box"
+                data-animate-effect="fadeInUp"
+              >
+                <a
+                  href="{% url 'exhibitions:exhibition_detail' exhibition.pk %}"
+                  style="text-decoration: none; color: inherit"
+                >
+                  <div
+                    class="item"
+                    style="background-image: url('{{ exhibition.image.url }}');"
+                  >
+                    <div class="con">
+                      <div class="numb">
+                        {{ forloop.counter|stringformat:"02d" }}
+                      </div>
+                      <h5>{{ exhibition.title }}</h5>
+                      <p>{{ exhibition.description|truncatewords:20 }}</p>
+                    </div>
+                  </div>
+                </a>
               </div>
+              {% empty %}
+              <div class="col-md-12 text-center">
+                <p>No exhibitions available at the moment.</p>
+              </div>
+              {% endfor %}
             </div>
-            {% empty %}
-            <div class="col-md-12 text-center">
-              <p>{% trans "No publications available at the moment." %}</p>
-            </div>
-            {% endfor %} {% if has_more %}
+            {% if has_more %}
             <div
               class="pozo-more-wrapper txt-center animate-box fadeInUp animated"
               data-animate-effect="fadeInUp"
@@ -125,7 +114,7 @@
                 href="#"
                 id="load-more-btn"
                 class="pozo-more-trigger flex"
-                data-page="{{ publications.next_page_number }}"
+                data-page="{{ next_page_number }}"
                 data-total="{{ total_count }}"
                 data-category="{{ active_category }}"
               >
@@ -136,10 +125,8 @@
           </div>
         </div>
       </section>
-      <!-- Footer -->
       {% include 'components/footer.html' %}
     </div>
-    <!-- jQuery -->
     <script src="{% static 'assets/js/plugins/jquery-3.6.3.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/scrollIt.min.js' %}"></script>
@@ -147,13 +134,14 @@
     <script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/swiper.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
-    <script src="{% static 'assets/js/script.js' %}"></script>
     <script src="{% static 'assets/js/locale.js' %}"></script>
-
+    <script src="{% static 'assets/js/script.js' %}"></script>
     <script>
       $(document).ready(function () {
         let isLoading = false;
-        let currentItemCount = $(".projects .col-md-4").length;
+        let currentItemCount = $(
+          "#exhibition-items-container .col-md-4"
+        ).length;
 
         $("#load-more-btn").on("click", function (e) {
           e.preventDefault();
@@ -161,17 +149,20 @@
           if (isLoading) return;
 
           const $btn = $(this);
+          const $wrapper = $(".pozo-more-wrapper");
           const page = parseInt($btn.data("page"));
           const category = $btn.data("category") || "";
           const total = parseInt($btn.data("total"));
 
+          // Debug log
+          console.log("Loading page:", page, "Category:", category);
+
           isLoading = true;
           $btn.addClass("loading");
-
           $btn.find(".plus").html('<i class="fa fa-spinner fa-spin"></i>');
 
           $.ajax({
-            url: '{% url "publications:load_more_publications" %}',
+            url: '{% url "exhibitions:load_more_exhibitions" %}',
             type: "GET",
             data: {
               page: page,
@@ -181,50 +172,76 @@
               "X-Requested-With": "XMLHttpRequest",
             },
             success: function (response) {
-              if (response.html) {
-                const $newItems = $(response.html);
+              console.log("Response:", response);
+              console.log(
+                "HTML length:",
+                response.html ? response.html.length : 0
+              );
+              console.log("HTML content:", response.html);
 
-                $(".projects .row")
-                  .find(".pozo-more-wrapper")
-                  .before($newItems);
+              if (response.html && response.html.trim() !== "") {
+                // Clean HTML and convert to jQuery object
+                const cleanHtml = response.html.trim();
+                console.log("Clean HTML:", cleanHtml);
 
-                $newItems.each(function (index) {
-                  const $item = $(this);
-                  const newCounter = currentItemCount + index + 1;
-                  $item
-                    .find(".category a")
-                    .text(String(newCounter).padStart(2, "0"));
-                });
+                const $newItems = $(cleanHtml);
+                console.log("New items count:", $newItems.length);
+                console.log("New items:", $newItems);
 
-                currentItemCount += $newItems.length;
+                // Find container and check
+                const $container = $("#exhibition-items-container");
+                console.log("Container found:", $container.length);
+                console.log(
+                  "Container current children:",
+                  $container.children().length
+                );
 
+                // Add new items
+                $container.append($newItems);
+
+                // Check after adding
+                console.log(
+                  "Container children after append:",
+                  $container.children().length
+                );
+
+                // Add animation classes
                 $newItems
                   .addClass("animate-box")
                   .attr("data-animate-effect", "fadeInUp");
 
+                // Restart waypoints (if they exist)
                 if (typeof contentWayPoint === "function") {
                   contentWayPoint();
                 }
 
-                // Burada has_more değerine göre butonun görünürlüğünü ayarlıyoruz
-                if (response.has_more) {
+                currentItemCount += $newItems.length;
+
+                // Check if there's more data
+                if (response.has_more && response.next_page) {
                   $btn.data("page", response.next_page);
-                  // Butonu göstermeye devam et
-                  $(".pozo-more-wrapper").show();
+                  console.log("Next page set to:", response.next_page);
+                  $wrapper.fadeIn(400); // Make sure the button is visible
                 } else {
-                  // Daha fazla veri yoksa butonu gizle
-                  $(".pozo-more-wrapper").fadeOut(400);
+                  console.log("No more pages, hiding button");
+                  $wrapper.fadeOut(400);
                 }
+              } else {
+                // Hide button if HTML is empty
+                console.log("Empty HTML response, hiding button");
+                $wrapper.fadeOut(400);
               }
             },
             error: function (xhr, status, error) {
-              console.error("Error loading more publications:", error);
+              console.error("Error loading more exhibitions:", error);
+              console.error("Status:", status);
+              console.error("Response:", xhr.responseText);
 
               const errorMsg =
                 '<div class="col-md-12 text-center error-message">' +
                 '<p style="color: #ff6b6b;">Daha fazla nəşr yüklənərkən xəta baş verdi. Yenidən cəhd edin.</p>' +
                 "</div>";
-              $(".pozo-more-wrapper").before(errorMsg);
+              $("#exhibition-items-container").append(errorMsg);
 
               setTimeout(function () {
                 $(".error-message").fadeOut(400, function () {
@@ -240,40 +257,39 @@
           });
         });
 
+        // CSS stilleri
         $("<style>")
           .prop("type", "text/css")
           .html(
             `
-      .pozo-more-trigger.loading {
-          opacity: 0.6;
-          pointer-events: none;
-      }
-      
-      .pozo-more-trigger .plus {
-          transition: all 0.3s ease;
-      }
-      
-      .pozo-more-trigger:hover .plus {
-          transform: rotate(90deg);
-      }
-      
-      .pozo-more-trigger.loading .plus {
-          transform: none;
-      }
-      
-      .error-message {
-          margin: 20px 0;
-          padding: 15px;
-          background-color: rgba(255, 107, 107, 0.1);
-          border-radius: 5px;
-          border-left: 3px solid #ff6b6b;
-      }
-    `
+                    .pozo-more-trigger.loading {
+                        opacity: 0.6;
+                        pointer-events: none;
+                    }
+                    
+                    .pozo-more-trigger .plus {
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .pozo-more-trigger:hover .plus {
+                        transform: rotate(90deg);
+                    }
+                    
+                    .pozo-more-trigger.loading .plus {
+                        transform: none;
+                    }
+                    
+                    .error-message {
+                        margin: 20px 0;
+                        padding: 15px;
+                        background-color: rgba(255, 107, 107, 0.1);
+                        border-radius: 5px;
+                        border-left: 3px solid #ff6b6b;
+                    }
+                `
           )
           .appendTo("head");
       });
     </script>
   </body>
-
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/project.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:14:00 GMT -->
 </html>

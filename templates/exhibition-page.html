@@ -1,7 +1,7 @@
 {% load static %} {% load i18n %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:13 GMT -->
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/project-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:13:25 GMT -->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -71,78 +71,46 @@
       </div>
       <!-- Navbar -->
       {% include 'components/navbar.html' %}
-      <!-- About Us -->
-      <section class="about pt-130">
-        <div class="container">
-          <div class="about-title"><h1>{{ about.title }}</h1></div>
-          <div class="row">
-            <div
-              class="col-md-6 image animate-box about-main-image"
-              data-animate-effect="fadeInUp"
-            >
-              <div class="img">
-                <img loading="lazy" src="{{ about.image.url }}" alt="{{ about.title }}" />
-              </div>
-            </div>
-            <div
-              class="col-md-6 image animate-box"
-              data-animate-effect="fadeInUp"
-            >
-              <!-- About -->
-              <div class="row">
-                <div class="col-md-12">
-                  <p>{{ about.description }}</p>
-
-                  <p>
-                    {% for aboutcontact in aboutcontacts %}
-                    <b>{{aboutcontact.name}}: </b> {{aboutcontact.description}}
-                    <br />
-                    {% endfor %}
-                  </p>
-                </div>
-              </div>
-              <!-- Team -->
-
-              <h2></h2>
-            </div>
-            {% for aboutcontent in aboutcontents %}
-            <div>
-              <div class="row mt-60 text-center">
-                <div class="col-md-12">
-                  <h2 class="about-section-title">{{ aboutcontent.title }}</h2>
-                  <br />
-                </div>
-              </div>
-              <div class="row">
-                <div class="row">
-                  {% if aboutcontent.image %}
-                  <div class="col-md-4">
-                    <img loading="lazy"
-                      src="{{ aboutcontent.image.url }}"
-                      alt="{{ aboutcontent.title }}"
-                    />
-                  </div>
-                  {% endif %}
-                  <div
-                    class="{% if aboutcontent.image %}col-md-8{% else %}col-md-12{% endif %}"
-                  >
-                    <p class="text-justify">{{ aboutcontent.description }}</p>
-                  </div>
-                </div>
-                <div class="about-content">
-                  {% for subsection in aboutcontent.subsections.all %}
-                  <div>
-                    <h4>{{ subsection.title }}</h4>
-                    <p>{{ subsection.description }}</p>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-            {% endfor %}
+      <!-- Project Page -->
+      <div class="projects container pt-130">
+        <div class="row">
+          <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+            <img loading="lazy"
+              style="padding: 0px 80px 10px"
+              class="img-fluid publication-main-image"
+              src="{{ exhibition.image.url }}"
+              alt="{{ exhibition.title }}"
+            />
+            <h2 class="mt-40">{{ exhibition.title }}</h2>
+            <p>{{ exhibition.description|linebreaks }}</p>
+            <br />
           </div>
         </div>
-      </section>
+      </div>
+      <!-- Gallery -->
+      {% if exhibition_images %}
+      <div class="container">
+        <div class="row mb-4">
+          {% for image in exhibition_images %}
+          <div
+            class="col-md-6 animate-box fadeInUp animated"
+            data-animate-effect="fadeInUp"
+          >
+            <figure>
+              <a
+                class="d-block mb-4"
+                data-fancybox="images"
+                href="{{ image.image.url }}"
+                data-caption="Quisque in felis"
+              >
+                <img loading="lazy" class="img-fluid" src="{{ image.image.url }}" alt="" />
+              </a>
+            </figure>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
       <!-- Footer -->
       {% include 'components/footer.html' %}
     </div>
@@ -158,5 +126,5 @@
     <script src="{% static 'assets/js/locale.js' %}"></script>
   </body>
 
-  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:19 GMT -->
+  <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/project-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:13:56 GMT -->
 </html>

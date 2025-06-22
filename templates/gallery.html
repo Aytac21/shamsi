@@ -47,7 +47,7 @@
     <!-- Page Preloader -->
     <div id="Lfa-page-loading" class="pozo-pageloading">
       <div class="pozo-pageloading-inner">
-        <img src="images/logo.png" class="logo" alt="" />
+        <img loading="lazy" src="images/logo.png" class="logo" alt="" />
       </div>
     </div>
 
@@ -127,7 +127,7 @@
                   data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
                 >
                   <div class="gallery-frame">
-                    <img
+                    <img loading="lazy"
                       class="img-fluid gallery-img"
                       src="{{ image.image.url }}"
                       alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
@@ -149,7 +149,7 @@
                   data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
                 >
                   <div class="gallery-frame">
-                    <img
+                    <img loading="lazy"
                       class="img-fluid gallery-img"
                       src="{{ image.image.url }}"
                       alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
@@ -174,7 +174,7 @@
                   data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
                 >
                   <div class="gallery-frame">
-                    <img
+                    <img loading="lazy"
                       class="img-fluid gallery-img"
                       src="{{ image.image.url }}"
                       alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
@@ -327,6 +327,7 @@
                   img.alt = `${imgObj.category} - Gallery Image ${
                     globalImageCounter + index + 1
                   }`;
+                  img.loading = "lazy";
 
                   // Resim yükleme hatası kontrolü
                   img.onerror = function () {

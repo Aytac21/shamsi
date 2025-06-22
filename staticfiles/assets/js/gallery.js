@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
           img.className = "img-fluid gallery-img";
           img.src = imgObj.image_url;
           img.alt = `Gallery Image ${globalImageCounter + index + 1}`;
+          img.loading = "lazy";
 
           // Resim yükleme hatası kontrolü
           img.onerror = function () {

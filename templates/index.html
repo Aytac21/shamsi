@@ -52,7 +52,7 @@
     <!-- Page Preloader -->
     <div id="Lfa-page-loading" class="pozo-pageloading">
       <div class="pozo-pageloading-inner">
-        <img src="{% static 'logo.svg' %}" class="logo-img" alt="" />
+        <img loading="lazy" src="{% static 'logo.svg' %}" class="logo-img" alt="" />
       </div>
     </div>
     <!-- Progress scroll totop -->
@@ -104,7 +104,7 @@
                       {%endif%}
                       target="_blank"
                     >
-                      <img
+                      <img loading="lazy"
                         src="{{ header.image.url }}"
                         alt="{{ header.title }}"
                         alt=""
@@ -162,7 +162,7 @@
                   <div class="swiper-wrapper">
                     {% for image in images %}
                     <div class="swiper-slide">
-                      <img src="{{ image.image.url }}" loading="lazy" />
+                      <img loading="lazy" src="{{ image.image.url }}" loading="lazy" />
                     </div>
                     {% endfor %}
                   </div>

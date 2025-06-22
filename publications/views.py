@@ -12,7 +12,7 @@ def home_view(request):
 def publication_list(request):
     publications = Publication.objects.all()
 
-    items_per_page = 6 
+    items_per_page = 6
     paginator = Paginator(publications, items_per_page)
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)

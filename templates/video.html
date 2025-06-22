@@ -48,7 +48,7 @@
     <!-- Page Preloader -->
     <div id="Lfa-page-loading" class="pozo-pageloading">
       <div class="pozo-pageloading-inner">
-        <img src="images/logo.png" class="logo" alt="" />
+        <img loading="lazy" src="images/logo.png" class="logo" alt="" />
       </div>
     </div>
 
@@ -100,13 +100,13 @@
                     class="gallery-block"
                   >
                     {% if video.image %}
-                    <img
+                    <img loading="lazy"
                       class="img-fluid gallery-img-fluid"
                       src="{{ video.image.url }}"
                       alt="{{ video.title }}"
                     />
                     {% else %}
-                    <img
+                    <img loading="lazy"
                       class="img-fluid gallery-img-fluid"
                       src="{% static 'images/gallery/default-video.jpg' %}"
                       alt="{{ video.title }}"
@@ -190,7 +190,7 @@
                   videosHtml += `
                                 <div class="col-md-6 mb-40 animate-box video-item" data-animate-effect="fadeInUp">
                                     <a class="gallery-block" data-fancybox="video-gallery" href="${video.video}">
-                                        <img class="img-fluid gallery-img-fluid" src="${imageUrl}" alt="${video.title}" />
+                                        <img loading="lazy" class="img-fluid gallery-img-fluid" src="${imageUrl}" alt="${video.title}" />
                                         <p><span class="fa fa-play"></span></p>
                                     </a>
                                     <h5>${video.title}</h5>

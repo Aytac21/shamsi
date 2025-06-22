@@ -46,7 +46,7 @@ body {
   line-height: 1.75em;
   font-weight: 300;
   color: #999;
-  background: #191919;
+  background: #191919f6;
 }
 h1,
 h2,
@@ -493,17 +493,17 @@ a {
   margin-left: -570px;
   top: 0;
   height: 100%;
-  border-left: 1px solid #222;
+  /* border-left: 1px solid #222;
   border-right: 1px solid #222;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #222; */
 }
 .content-lines {
   position: absolute;
   left: 33.333333%;
   right: 33.333333%;
   height: 100%;
-  border-left: 1px solid #222;
-  border-right: 1px solid #222;
+  /* border-left: 1px solid #222;
+  border-right: 1px solid #222; */
 }
 
 /* =======  Section Style  ======= */
@@ -1053,7 +1053,8 @@ a {
 .pozo-section-slider {
   width: 100%;
   height: auto;
-  background-color: #191919;
+  background: #191919f6 !important;
+
 }
 .pozo-section-slider .next-container-center {
   width: 100%;
@@ -1792,6 +1793,8 @@ ul.team-info-social li {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   -webkit-filter: brightness(100%);
+  max-height: 200px;
+  object-fit: cover;
 }
 .projects .item .con {
   padding: 30px;
@@ -1969,8 +1972,8 @@ ul.team-info-social li {
 
 .google-map {
   width: 100%;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  /* -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); */
   height: calc(100% + 30px);
   overflow: hidden;
 }
@@ -2229,7 +2232,7 @@ ul.team-info-social li {
 
 /* ======= Footer styles ======= */
 .pozo-footer-container {
-  border-top: 1px solid #222;
+  /* border-top: 1px solid #222; */
   position: relative;
   padding-top: 60px;
   padding-bottom: 60px;
