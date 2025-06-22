@@ -2428,6 +2428,7 @@ ul.team-info-social li {
   .pozo-section-slider {
     padding-bottom: 40px;
   }
+  
   .swiper-slide-block .swiper-slide-block-img {
     width: 70%;
     max-height: 560px;
@@ -2506,9 +2507,13 @@ ul.team-info-social li {
   padding: 0 40px;
 }
 
+.home-container > .section-head {
+margin-top: 15px
+}
+
 .home-page .swiper-container {
   width: 100%;
-  padding-top: 50px;
+  padding-top: 40px;
   padding-bottom: 50px;
   overflow: hidden;
 }
@@ -3011,5 +3016,19 @@ ul.team-info-social li {
   }
   h4 {
     line-height: 1.76rem !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .swiper-slide-block .swiper-slide-block-text{
+        padding-left: 20px;
+        padding-bottom: 50px;
+
+  }
+}
+
+@media (max-width: 700px) {
+  .home-page .swiper {
+    padding: 0;
   }
 }
