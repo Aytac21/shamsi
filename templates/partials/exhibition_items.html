@@ -1,0 +1,21 @@
+{% load i18n %} {% for exhibition in exhibitions %}
+<div class="col-md-4 mb-40 animate-box" data-animate-effect="fadeInUp">
+  <a
+    href="{% url 'exhibitions:exhibition_detail' exhibition.pk %}"
+    style="text-decoration: none; color: inherit"
+  >
+    <div
+      class="item"
+      style="background-image: url('{{ exhibition.image.url }}');"
+    >
+      <div class="con">
+        <div class="numb">
+          {{ start_index|add:forloop.counter0|stringformat:"02d" }}
+        </div>
+        <h5>{{ exhibition.title }}</h5>
+        <p>{{ exhibition.description|truncatewords:20 }}</p>
+      </div>
+    </div>
+  </a>
+</div>
+{% endfor %}

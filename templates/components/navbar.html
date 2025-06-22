@@ -11,6 +11,7 @@
         href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}"
       >
         <img
+          loading="lazy"
           src="{% static 'logo.svg' %}"
           class="logo-img"
           alt="Rəssam Əli Şəmsi"
@@ -19,49 +20,50 @@
       <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
     </div>
     <!-- Button -->
-    <div class="navbar-right-side"><li class="nav-item lang-btn-mobile">
-          <div class="language-selector" id="languageSelector">
-            <button class="current-lang" id="currentLang">
-              <span id="currentLangText">
-                {% if LANGUAGE_CODE == 'az' %}AZ{% elif LANGUAGE_CODE == 'ru'
-                %}RU{% else %}EN{% endif %}
-              </span>
+    <div class="navbar-right-side">
+      <li class="nav-item lang-btn-mobile">
+        <div class="language-selector" id="languageSelector">
+          <button class="current-lang" id="currentLang">
+            <span id="currentLangText">
+              {% if LANGUAGE_CODE == 'az' %}AZ{% elif LANGUAGE_CODE == 'ru'
+              %}RU{% else %}EN{% endif %}
+            </span>
+          </button>
+          <div class="dropdown" id="dropdown">
+            <button
+              class="lang-option {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
+              data-lang="az"
+            >
+              AZ
             </button>
-            <div class="dropdown" id="dropdown">
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'az' %}active{% endif %}"
-                data-lang="az"
-              >
-                AZ
-              </button>
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
-                data-lang="en"
-              >
-                EN
-              </button>
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
-                data-lang="ru"
-              >
-                RU
-              </button>
-            </div>
+            <button
+              class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+              data-lang="en"
+            >
+              EN
+            </button>
+            <button
+              class="lang-option {% if LANGUAGE_CODE == 'ru' %}active{% endif %}"
+              data-lang="ru"
+            >
+              RU
+            </button>
           </div>
-        </li>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbar"
-      aria-controls="navbar"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
-      
-    </button></div>
-   
+        </div>
+      </li>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbar"
+        aria-controls="navbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+      </button>
+    </div>
+
     <!-- Menu -->
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ms-auto">
@@ -86,7 +88,7 @@
             >Qalereya</a
           >
         </li>
-          <li class="nav-item">
+        <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'video-gallery' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}videos/"
@@ -98,6 +100,13 @@
             class="nav-link {% if request.resolver_match.url_name == 'publication_list' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}publications/"
             >Nəşrlər</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'exhibition_list' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}exhibitions/"
+            >Sərgilər</a
           >
         </li>
         <li class="nav-item">
