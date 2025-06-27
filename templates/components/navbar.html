@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <meta name="csrf-token" content="{{ csrf_token }}" />
 
@@ -14,7 +15,7 @@
           loading="lazy"
           src="{% static 'logo.svg' %}"
           class="logo-img"
-          alt="Rəssam Əli Şəmsi"
+          alt="{% trans 'Rəssam Əli Şəmsi' %}"
         />
       </a>
       <!-- <a class="logo" href="index.html"> <h2>POZO</h2> </a> -->
@@ -71,49 +72,56 @@
           <a
             class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}"
-            >Ana səhifə</a
+            >{% trans "Ana səhifə" %}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}about/"
-            >Haqqında</a
+            >{% trans "Haqqında" %}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}gallery/"
-            >Qalereya</a
+            >{% trans "Qalereya" %}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'video-gallery' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}videos/"
-            >Videolar</a
+            >{% trans "Videolar" %}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'publication_list' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}publications/"
-            >Nəşrlər</a
+            >{% trans "Nəşrlər" %}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'exhibition_list' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}exhibitions/"
-            >Sərgilər</a
+            >{% trans "Sərgilər" %}</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.resolver_match.url_name == 'workshop' %}active{% endif %}"
+            href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}workshop/"
+            >{% trans "Emalatxana" %}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}contact/"
-            >Əlaqə</a
+            >{% trans "Əlaqə" %}</a
           >
         </li>
         <li class="nav-item lang-btn">

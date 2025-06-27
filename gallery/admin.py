@@ -1,15 +1,26 @@
 from django.contrib import admin
 from .models import Category, ImageGallery, VideoGallery
+from modeltranslation.admin import TranslationAdmin
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = ['name', 'slug', 'is_active', 'order', 'created_at']
     list_filter = ['is_active', 'created_at']
     search_fields = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
     list_editable = ['is_active', 'order']
     ordering = ['order', 'name']
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
 @admin.register(ImageGallery)
@@ -30,7 +41,7 @@ class ImageGalleryAdmin(admin.ModelAdmin):
 
 
 @admin.register(VideoGallery)
-class VideoGalleryAdmin(admin.ModelAdmin):
+class VideoGalleryAdmin(TranslationAdmin):
     list_display = ['id', 'image_preview', 'video', 'title',
                     'is_active', 'order', 'created_at']
     list_filter = ['is_active', 'created_at', 'title']
@@ -44,3 +55,13 @@ class VideoGalleryAdmin(admin.ModelAdmin):
 
     image_preview.short_description = 'Preview'
     image_preview.allow_tags = True
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }

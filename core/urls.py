@@ -35,6 +35,7 @@ urlpatterns += i18n_patterns(
     path('', include('home.urls')),
     path('about/', include('about.urls')),
     path('', include('contact.urls')),
+    path('', include('workshop.urls')),
     prefix_default_language=False
 
 )

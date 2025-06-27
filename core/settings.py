@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'home',
     'about',
     'contact',
-    'exhibitions'
+    'exhibitions',
+    'workshop'
 ]
 
 MIDDLEWARE = [

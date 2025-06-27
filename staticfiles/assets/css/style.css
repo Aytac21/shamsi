@@ -2884,16 +2884,17 @@ margin-top: 15px
 .gallery-frame {
   position: relative;
   display: inline-block;
+  overflow: hidden;
 }
 
 /* Beyaz İç Çerçeve */
 .gallery-frame::before {
   content: "";
   position: absolute;
-  top: 8%;
+  top: 6%;
   left: 6%;
   right: 7%;
-  bottom: 8%;
+  bottom: 6%;
   border: 10px solid white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3) inset, 0 0 3px rgba(0, 0, 0, 0.1);
   pointer-events: none;
@@ -2905,7 +2906,7 @@ margin-top: 15px
   display: block;
   width: 100%;
   height: auto;
-  border: 30px solid;
+  border: 27px solid;
   border-bottom-color: #000000;
   border-top-color: #2e2e2e;
   border-left-color: #2e2e2e;
@@ -3032,3 +3033,85 @@ margin-top: 15px
     padding: 0;
   }
 }
+
+.pozo-workshop-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 30px;
+}
+
+.pozo-workshop-filters .pozo-workshop-filter-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #999;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.pozo-workshop-filters .pozo-workshop-filter-btn::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background-color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -12px;
+}
+
+/* .pozo-workshop-filters .pozo-workshop-filter-btn::after {
+  content: '|';
+  position: absolute;
+  left: -6px;
+  top: 49.1%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+  z-index: 2;
+  background-color: transparent;
+} */
+
+.pozo-workshop-filters .pozo-workshop-filter-btn.active::after {
+  color: #9c5451;
+}
+
+.pozo-workshop-filters .pozo-workshop-filter-btn.active {
+  border: 1px solid #9c5451;
+  color: #9c5451;
+}
+
+.pozo-workshop-filters .pozo-workshop-filter-btn.active::before {
+  background-color: #9c5451;
+}
+
+.pozo-workshop-filter-btn:hover {
+  border: 1px solid #9c5451;
+}
+
+.pozo-workshop-filter-btn:hover::after{
+  color: #9c5451;
+}
+
+.pozo-workshop-filter-btn:hover::before {
+  background-color: #9c5451;
+}
+
+@media (max-width: 768px) {
+  .pozo-workshop-filters {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pozo-workshop-filters .pozo-workshop-filter-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+

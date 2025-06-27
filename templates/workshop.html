@@ -83,7 +83,7 @@
               class="section-head text-center col-md-12 animate-box"
               data-animate-effect="fadeInUp"
             >
-             <h4>{% trans "Rəsmlər" %}</h4>
+              <h4>{% trans "Rəsmlər" %}</h4>
             </div>
           </div>
 
@@ -91,12 +91,11 @@
           <div class="row mb-4">
             <div class="col-12">
               <div
-                class="pozo-gallery-filters animate-box"
-                data-animate-effect="fadeInUp"
-              >
+                class="pozo-workshop-filters animate-box"
+                data-animate-effect="fadeInUp">
                 <a
                   href="?category=all"
-                  class="pozo-filter-btn {% if active_category == 'all' %}active{% endif %}"
+                  class="pozo-workshop-filter-btn {% if active_category == 'all' %}active{% endif %}"
                   data-category="all"
                 >
                   Hamısı
@@ -104,7 +103,7 @@
                 {% for category in categories %}
                 <a
                   href="?category={{ category.slug }}"
-                  class="pozo-filter-btn {% if active_category == category.slug %}active{% endif %}"
+                  class="pozo-workshop-filter-btn {% if active_category == category.slug %}active{% endif %}"
                   data-category="{{ category.slug }}"
                 >
                   {{ category.name }}
@@ -118,46 +117,52 @@
           <div class="row mb-4" id="gallery-container">
             <!-- First Column: Index 0,3,6,9 (mod 3 = 0) -->
             <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              {% for image in images %} {% if forloop.counter0|divisibleby:3 %}
-              <figure class="gallery-figure">
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="{{ image.image.url }}"
-                  data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                >
-                  <div class="gallery-frame">
-                    <img loading="lazy"
-                      class="img-fluid gallery-img"
-                      src="{{ image.image.url }}"
-                      alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                    />
-                  </div>
-                </a>
-              </figure>
-              {% endif %} {% endfor %}
+              {% for image in images %}
+                {% if forloop.counter0|divisibleby:3 %}
+                  <figure class="gallery-figure">
+                    <a
+                      class="d-block mb-4"
+                      data-fancybox="images"
+                      href="{{ image.image.url }}"
+                      data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                    >
+                      <div class="gallery-frame">
+                        <img
+                          loading="lazy"
+                          class="img-fluid gallery-img"
+                          src="{{ image.image.url }}"
+                          alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                        />
+                      </div>
+                    </a>
+                  </figure>
+                {% endif %}
+              {% endfor %}
             </div>
 
             <!-- Second Column: Index 1,4,7,10 (mod 3 = 1) -->
             <div class="col-md-4 animate-box" data-animate-effect="fadeInUp">
-              {% for image in images %} {% if forloop.counter0|add:"2"|divisibleby:3 %}
-              <figure class="gallery-figure">
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="{{ image.image.url }}"
-                  data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                >
-                  <div class="gallery-frame">
-                    <img loading="lazy"
-                      class="img-fluid gallery-img"
-                      src="{{ image.image.url }}"
-                      alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                    />
-                  </div>
-                </a>
-              </figure>
-              {% endif %} {% endfor %}
+              {% for image in images %}
+                {% if forloop.counter0|add:"2"|divisibleby:3 %}
+                  <figure class="gallery-figure">
+                    <a
+                      class="d-block mb-4"
+                      data-fancybox="images"
+                      href="{{ image.image.url }}"
+                      data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                    >
+                      <div class="gallery-frame">
+                        <img
+                          loading="lazy"
+                          class="img-fluid gallery-img"
+                          src="{{ image.image.url }}"
+                          alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                        />
+                      </div>
+                    </a>
+                  </figure>
+                {% endif %}
+              {% endfor %}
             </div>
 
             <!-- Third Column: Index 2,5,8 (mod 3 = 2) -->
@@ -165,24 +170,27 @@
               class="col-md-4 d-none d-lg-block animate-box"
               data-animate-effect="fadeInUp"
             >
-              {% for image in images %} {% if forloop.counter0|add:"1"|divisibleby:3 %}
-              <figure class="gallery-figure">
-                <a
-                  class="d-block mb-4"
-                  data-fancybox="images"
-                  href="{{ image.image.url }}"
-                  data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                >
-                  <div class="gallery-frame">
-                    <img loading="lazy"
-                      class="img-fluid gallery-img"
-                      src="{{ image.image.url }}"
-                      alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
-                    />
-                  </div>
-                </a>
-              </figure>
-              {% endif %} {% endfor %}
+              {% for image in images %}
+                {% if forloop.counter0|add:"1"|divisibleby:3 %}
+                  <figure class="gallery-figure">
+                    <a
+                      class="d-block mb-4"
+                      data-fancybox="images"
+                      href="{{ image.image.url }}"
+                      data-caption="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                    >
+                      <div class="gallery-frame">
+                        <img
+                          loading="lazy"
+                          class="img-fluid gallery-img"
+                          src="{{ image.image.url }}"
+                          alt="{{ image.category.name }} - Gallery Image {{ forloop.counter }}"
+                        />
+                      </div>
+                    </a>
+                  </figure>
+                {% endif %}
+              {% endfor %}
             </div>
           </div>
 
@@ -227,7 +235,7 @@
         const columns = Array.from(
           document.querySelectorAll("#gallery-container .col-md-4.animate-box")
         );
-        const filterBtns = document.querySelectorAll(".pozo-filter-btn");
+        const filterBtns = document.querySelectorAll(".pozo-workshop-filter-btn");
 
         if (!columns.length) {
           console.log("Columns not found");
