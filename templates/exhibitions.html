@@ -136,7 +136,7 @@
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/locale.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
-    <script>
+    <!-- <script>
       $(document).ready(function () {
         let isLoading = false;
         let currentItemCount = $(
@@ -162,7 +162,7 @@
           $btn.find(".plus").html('<i class="fa fa-spinner fa-spin"></i>');
 
           $.ajax({
-            url: '{% url "exhibitions:load_more_exhibitions" %}',
+            url: '{% url "about:load_more_exhibitions" %}',
             type: "GET",
             data: {
               page: page,
@@ -290,6 +290,6 @@
           )
           .appendTo("head");
       });
-    </script>
+    </script> -->
   </body>
 </html>

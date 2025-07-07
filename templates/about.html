@@ -81,7 +81,11 @@
               data-animate-effect="fadeInUp"
             >
               <div class="img">
-                <img loading="lazy" src="{{ about.image.url }}" alt="{{ about.title }}" />
+                <img
+                  loading="lazy"
+                  src="{{ about.image.url }}"
+                  alt="{{ about.title }}"
+                />
               </div>
             </div>
             <div
@@ -105,41 +109,62 @@
 
               <h2></h2>
             </div>
-            {% for aboutcontent in aboutcontents %}
-            <div>
-              <div class="row mt-60 text-center">
-                <div class="col-md-12">
-                  <h2 class="about-section-title">{{ aboutcontent.title }}</h2>
-                  <br />
-                </div>
-              </div>
-              <div class="row">
+            <section class="services pt-130">
+              <div class="container">
                 <div class="row">
-                  {% if aboutcontent.image %}
-                  <div class="col-md-4">
-                    <img loading="lazy"
-                      src="{{ aboutcontent.image.url }}"
-                      alt="{{ aboutcontent.title }}"
-                    />
+                  <div
+                    class="section-head col-md-12 text-center animate-box"
+                    data-animate-effect="fadeInUp"
+                  >
+                    <h4>{% trans 'Sərgilər' %}</h4>
+                  </div>
+                  <div id="exhibition-items-container" class="row">
+                    {% for exhibition in exhibitions %}
+                    <div
+                      class="col-md-4 mb-40 animate-box"
+                      data-animate-effect="fadeInUp"
+                    >
+                      <a
+                        href="{% url 'exhibitions:exhibition_detail' exhibition.pk %}"
+                        style="text-decoration: none; color: inherit"
+                      >
+                        <div class="item">
+                          <div class="con">
+                            <div class="numb">
+                              {{ forloop.counter|stringformat:"02d" }}
+                            </div>
+                            <h5>{{ exhibition.title }}</h5>
+                            <p>{{ exhibition.date|date:"d.m.Y" }}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    {% empty %}
+                    <div class="col-md-12 text-center">
+                      <p>No exhibitions available at the moment.</p>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  {% if has_more %}
+                  <div
+                    class="pozo-more-wrapper txt-center animate-box fadeInUp animated"
+                    data-animate-effect="fadeInUp"
+                  >
+                    <a
+                      href="#"
+                      id="load-more-btn"
+                      class="pozo-more-trigger flex"
+                      data-page="{{ next_page_number }}"
+                      data-total="{{ total_count }}"
+                      data-category="{{ active_category }}"
+                    >
+                      <span class="plus flex-center">&nbsp;</span>
+                    </a>
                   </div>
                   {% endif %}
-                  <div
-                    class="{% if aboutcontent.image %}col-md-8{% else %}col-md-12{% endif %}"
-                  >
-                    <p class="text-justify">{{ aboutcontent.description }}</p>
-                  </div>
-                </div>
-                <div class="about-content">
-                  {% for subsection in aboutcontent.subsections.all %}
-                  <div>
-                    <h4>{{ subsection.title }}</h4>
-                    <p>{{ subsection.description }}</p>
-                  </div>
-                  {% endfor %}
                 </div>
               </div>
-            </div>
-            {% endfor %}
+            </section>
           </div>
         </div>
       </section>
@@ -156,6 +181,162 @@
     <script src="{% static 'assets/js/plugins/jquery.fancybox.min.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
     <script src="{% static 'assets/js/locale.js' %}"></script>
+
+    <script>
+      $(document).ready(function () {
+        let isLoading = false;
+        let currentItemCount = $(
+          "#exhibition-items-container .col-md-4"
+        ).length;
+
+        $("#load-more-btn").on("click", function (e) {
+          e.preventDefault();
+
+          if (isLoading) return;
+
+          const $btn = $(this);
+          const $wrapper = $(".pozo-more-wrapper");
+          const page = parseInt($btn.data("page"));
+          const category = $btn.data("category") || "";
+          const total = parseInt($btn.data("total"));
+
+          // Debug log
+          console.log("Loading page:", page, "Category:", category);
+
+          isLoading = true;
+          $btn.addClass("loading");
+          $btn.find(".plus").html('<i class="fa fa-spinner fa-spin"></i>');
+
+          $.ajax({
+            url: '{% url "about:load_more_exhibitions" %}',
+            type: "GET",
+            data: {
+              page: page,
+              category: category,
+            },
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            success: function (response) {
+              console.log("Response:", response);
+              console.log(
+                "HTML length:",
+                response.html ? response.html.length : 0
+              );
+              console.log("HTML content:", response.html);
+
+              if (response.html && response.html.trim() !== "") {
+                // Clean HTML and convert to jQuery object
+                const cleanHtml = response.html.trim();
+                console.log("Clean HTML:", cleanHtml);
+
+                const $newItems = $(cleanHtml);
+                console.log("New items count:", $newItems.length);
+                console.log("New items:", $newItems);
+
+                // Find container and check
+                const $container = $("#exhibition-items-container");
+                console.log("Container found:", $container.length);
+                console.log(
+                  "Container current children:",
+                  $container.children().length
+                );
+
+                // Add new items
+                $container.append($newItems);
+
+                // Check after adding
+                console.log(
+                  "Container children after append:",
+                  $container.children().length
+                );
+
+                // Add animation classes
+                $newItems
+                  .addClass("animate-box")
+                  .attr("data-animate-effect", "fadeInUp");
+
+                // Restart waypoints (if they exist)
+                if (typeof contentWayPoint === "function") {
+                  contentWayPoint();
+                }
+
+                currentItemCount += $newItems.length;
+
+                // Check if there's more data
+                if (response.has_more && response.next_page) {
+                  $btn.data("page", response.next_page);
+                  console.log("Next page set to:", response.next_page);
+                  $wrapper.fadeIn(400); // Make sure the button is visible
+                } else {
+                  console.log("No more pages, hiding button");
+                  $wrapper.fadeOut(400);
+                }
+              } else {
+                // Hide button if HTML is empty
+                console.log("Empty HTML response, hiding button");
+                $wrapper.fadeOut(400);
+              }
+            },
+            error: function (xhr, status, error) {
+              console.error("Error loading more exhibitions:", error);
+              console.error("Status:", status);
+              console.error("Response:", xhr.responseText);
+
+              const errorMsg =
+                '<div class="col-md-12 text-center error-message">' +
+                '<p style="color: #ff6b6b;">Daha fazla nəşr yüklənərkən xəta baş verdi. Yenidən cəhd edin.</p>' +
+                "</div>";
+              $("#exhibition-items-container").append(errorMsg);
+
+              setTimeout(function () {
+                $(".error-message").fadeOut(400, function () {
+                  $(this).remove();
+                });
+              }, 5000);
+            },
+            complete: function () {
+              isLoading = false;
+              $btn.removeClass("loading");
+              $btn.find(".plus").html("&nbsp;");
+            },
+          });
+        });
+
+        // CSS stilleri
+        $("<style>")
+          .prop("type", "text/css")
+          .html(
+            `
+                    .pozo-more-trigger.loading {
+                        opacity: 0.6;
+                        pointer-events: none;
+                    }
+                    
+                    .pozo-more-trigger .plus {
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .pozo-more-trigger:hover .plus {
+                        transform: rotate(90deg);
+                    }
+                    
+                    .pozo-more-trigger.loading .plus {
+                        transform: none;
+                    }
+                    
+                    .error-message {
+                        margin: 20px 0;
+                        padding: 15px;
+                        background-color: rgba(255, 107, 107, 0.1);
+                        border-radius: 5px;
+                        border-left: 3px solid #ff6b6b;
+                    }
+                `
+          )
+          .appendTo("head");
+      });
+    </script>
   </body>
 
   <!-- Mirrored from duruthemes.com/demo/html/pozo/dark/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 May 2025 17:11:19 GMT -->

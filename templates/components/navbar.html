@@ -103,13 +103,13 @@
             >{% trans "Nəşrlər" %}</a
           >
         </li>
-        <li class="nav-item">
+        {% comment %} <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'exhibition_list' %}active{% endif %}"
             href="{% if LANGUAGE_CODE == 'az' %}/az/{% elif LANGUAGE_CODE == 'ru' %}/ru/{% else %}/{% endif %}exhibitions/"
             >{% trans "Sərgilər" %}</a
           >
-        </li>
+        </li>  {% endcomment %}
         <li class="nav-item">
           <a
             class="nav-link {% if request.resolver_match.url_name == 'workshop' %}active{% endif %}"

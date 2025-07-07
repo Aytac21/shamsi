@@ -10,7 +10,7 @@ class ExhibitionImagesInline(admin.TabularInline):
 
 @admin.register(Exhibition)
 class ExhibitionAdmin(TranslationAdmin):
-    list_display = ['title', 'description']
+    list_display = ['title', 'description', 'date']
     list_filter = ['title']
     search_fields = ['title', 'description']
     inlines = [ExhibitionImagesInline]
