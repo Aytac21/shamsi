@@ -128,7 +128,8 @@
                         href="{% url 'exhibitions:exhibition_detail' exhibition.pk %}"
                         style="text-decoration: none; color: inherit"
                       >
-                        <div class="item">
+                        <div class="item"
+                          style="background-image: url('{{ exhibition.image.url }}');">
                           <div class="con">
                             <div class="numb">
                               {{ forloop.counter|stringformat:"02d" }}
