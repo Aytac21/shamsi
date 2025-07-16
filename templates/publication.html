@@ -88,7 +88,7 @@
                 <div class="position-re o-hidden">
                   <img
                     loading="lazy"
-                    src="{{ publication.image.url }}"
+                    src="{% if publication.image %}{{ publication.image.url }}{% else %}{% static 'images/alishamsiphoto.jpg' %}{% endif %}"
                     alt="{{ publication.title }}"
                   />
                 </div>

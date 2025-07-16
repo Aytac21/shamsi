@@ -68,7 +68,8 @@ body.compensate-for-scrollbar {
   visibility: visible
 }
 .fancybox-infobar {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', "Arial", sans-serif;
+  font-feature-settings: "liga", "kern";
   color: #fff;
   font-size: 13px;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -357,7 +358,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-progress {
-  background: #9c5451;
+  background: #C64444;
   height: 2px;
   left: 0;
   position: absolute;
@@ -815,7 +816,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-thumbs__list a:before {
-  border: 6px solid #9c5451;
+  border: 6px solid #C64444;
   bottom: 0;
   content: "";
   left: 0;
