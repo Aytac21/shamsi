@@ -42,19 +42,27 @@ class ImageGalleryAdmin(admin.ModelAdmin):
 
 @admin.register(VideoGallery)
 class VideoGalleryAdmin(TranslationAdmin):
-    list_display = ['id', 'image_preview', 'video', 'title',
+    list_display = ['id', 'image_preview', 'video_preview', 'title',
                     'is_active', 'order', 'created_at']
     list_filter = ['is_active', 'created_at', 'title']
     list_editable = ['is_active', 'order']
     ordering = ['order', '-created_at']
+    fields = ['title', 'video', 'image', 'is_active', 'order']
 
     def image_preview(self, obj):
         if obj.image:
             return f'<img src="{obj.image.url}" width="50" height="50" style="object-fit: cover;">'
         return "No Image"
 
-    image_preview.short_description = 'Preview'
+    def video_preview(self, obj):
+        if obj.video:
+            return f'<video width="80" height="50" controls><source src="{obj.video.url}" type="video/mp4"></video>'
+        return "No Video"
+
+    image_preview.short_description = 'Thumbnail'
     image_preview.allow_tags = True
+    video_preview.short_description = 'Video Preview'
+    video_preview.allow_tags = True
 
     class Media:
         js = (

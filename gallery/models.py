@@ -34,15 +34,14 @@ class ImageGallery(models.Model):
 
 class VideoGallery(models.Model):
     image = models.ImageField(upload_to='videoGallery/')
-    video = models.URLField()
-    title = models.CharField(max_length=255)
+    video = models.FileField(upload_to='videos/') 
+    title = models.CharField(max_length=255, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    in_home = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['order', '-created_at']
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.title} - {self.id}"

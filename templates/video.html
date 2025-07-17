@@ -96,7 +96,7 @@
                 >
                   <a
                     data-fancybox="video-gallery"
-                    href="{{ video.video }}"
+                    href="{{ video.video.url }}"
                     class="gallery-block"
                   >
                     {% if video.image %}
@@ -114,7 +114,9 @@
                     {% endif %}
                     <p><span class="fa fa-play"></span></p>
                   </a>
+                  {% if video.title %}
                   <h5>{{ video.title }}</h5>
+                  {% endif %}
                 </div>
                 {% endfor %}
               </div>
@@ -189,11 +191,11 @@
 
                   videosHtml += `
                                 <div class="col-md-6 mb-40 animate-box video-item" data-animate-effect="fadeInUp">
-                                    <a class="gallery-block" data-fancybox="video-gallery" href="${video.video}">
+                                    <a class="gallery-block" data-fancybox="video-gallery" href="${video.video_url}">
                                         <img loading="lazy" class="img-fluid gallery-img-fluid" src="${imageUrl}" alt="${video.title}" />
                                         <p><span class="fa fa-play"></span></p>
                                     </a>
-                                    <h5>${video.title}</h5>
+                                   ${video.title ? `<h5>${video.title}</h5>` : ''}
                                 </div>
                             `;
                 });

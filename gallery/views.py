@@ -127,8 +127,9 @@ def gallery_video_view(request):
         videos_data.append({
             'id': video.id,
             'image_url': video.image.url if video.image else '',
-            'video': video.video,
-            'title': video.title
+            'video_url': video.video.url if video.video else '',  # video.url yerine video.video.url
+            'title': video.title,
+            'created_at': video.created_at.strftime('%d %b %Y') if video.created_at else ''
         })
 
     context = {
@@ -170,8 +171,9 @@ def load_more_videos(request):
             videos_data.append({
                 'id': video.id,
                 'image_url': video.image.url if video.image else '',
-                'video': video.video,
-                'title': video.title
+                'video_url': video.video.url if video.video else '',  # video.url yerine video.video.url
+                'title': video.title,
+                'created_at': video.created_at.strftime('%d %b %Y') if video.created_at else ''
             })
 
         return JsonResponse({
